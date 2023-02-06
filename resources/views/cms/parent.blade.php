@@ -410,13 +410,13 @@
             </a>
           </li> --}}
 
-          {{-- <li class="nav-item">
+          <li class="nav-item">
             <a href="{{ route('view.test') }}" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
-              {{-- <i class="fas fa-sign-out-alt"></i> --}}
-            {{-- <p>Log out</p>
+               {{-- <i class="fas fa-sign-out-alt"></i> --}}
+            <p>Log out</p>
             </a>
-          </li> --}}
+          </li>
 
 
         </ul>

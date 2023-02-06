@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('cms/')->middleware('guest:admin,author')->group(function(){
+    Route::get('{guard}/login' , [UserAuthController::class , 'showLogin'] )->name('view.login');
+    Route::post('{guard}/login' , [UserAuthController::class , 'login']);
+});
+
+Route::prefix('cms/admin/')->middleware('auth:admin,author')->group(function(){
+    Route::get('logout' , [UserAuthController::class , 'logout'] )->name('view.test');
+
 });
 
 
@@ -40,8 +49,8 @@ Route::prefix('cms/admin')->group(function () {
     Route::resource('roles.permissions' , RolePermissionController::class);
 
 
-    Route::resource('viewers' , ViewerController::class);
-    Route::post('update-viewers/{id}' , [ViewerController::class , 'update'])->name('update-viewers');
+    Route::resource('meals' , MealController::class);
+    Route::post('update-meals/{id}' , [MealController::class , 'update'])->name('update-meals');
 
     Route::resource('categories' , CategoryController::class);
     Route::post('update-categories/{id}' , [CategoryController::class , 'update'])->name('update-categories');
@@ -49,8 +58,6 @@ Route::prefix('cms/admin')->group(function () {
     Route::resource('articles' , ArticleController::class);
     Route::post('update-articles/{id}' , [ArticleController::class , 'update'])->name('update-articles');
 
-    Route::resource('author_categories' , AuthorCategoryController::class);
-    Route::post('update-author_categories/{id}' , [AuthorCategoryController::class , 'update'])->name('update-author_categories');
 
     Route::get('/create/articles/{id}', [ArticleController::class, 'createArticle'])->name('createArticle');
     Route::get('/index/articles/{id}', [ArticleController::class, 'indexArticle'])->name('indexArticle');
