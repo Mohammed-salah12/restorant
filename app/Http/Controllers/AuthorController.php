@@ -29,9 +29,9 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        $roles = Role::where('guard_name' , 'admin')->get();
+        $roles = Role::where('guard_name' , 'author')->get();
 
-        return response()->view('cms.author.create');
+        return response()->view('cms.author.create' , compact('roles'));
 
     }
 
