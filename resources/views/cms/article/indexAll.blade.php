@@ -1,10 +1,10 @@
 @extends('cms.parent')
 
-@section('title' , ' Meal')
+@section('title' , ' Article')
 
-@section('main-title' , 'Index Meal')
+@section('main-title' , 'Index Article')
 
-@section('sub-title' , 'index meal')
+@section('sub-title' , 'index article')
 
 @section('styles')
 
@@ -38,52 +38,38 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                {{-- <h3 class="card-title"> Index Data of Meal</h3> --}}
+                {{-- <h3 class="card-title"> Index Data of article</h3> --}}
 
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                        <th>Meal Number</th>
                         <th>Image</th>
-                        <th>Name</th>
-                        <th>Price</th>
+                        <th>Title</th>
                         <th>Category</th>
                         <th>Description</th>
                         <th>Setting</th>
                       </tr>
                   </thead>
                   <tbody>
-                    @foreach ($meals as $meal )
+                    @foreach ($articles as $article )
                     <tr>
-                        <td>{{ $meal->meal_number }}</td>
+                        <td>{{ $article->article_number }}</td>
                         <td>
-                            <img class="img-circle img-bordered-sm" src="{{asset('storage/images/meal/'.$meal->image)}}" width="60" height="60" alt="User Image">
+                            <img class="img-circle img-bordered-sm" src="{{asset('storage/images/article/'.$article->image)}}" width="60" height="60" alt="User Image">
                          </td>
-                        <td>{{ $meal->name }}</td>
-                        <td>{{ $meal->price }}</td>
-                        <td>{{ $meal->category->name }}</td>
-                        <td>{{ $meal->description }}</td>
+                         <td>{{ $article->title }}</td>
+                         <td>{{ $article->articleCategory->name }}</td>
+                         <td>{{ $article->description }}</td>
 
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('meals.edit' , $meal->id ) }}" type="button" class="btn btn-info">
+                                <a href="{{ route('articles.edit' , $article->id ) }}" type="button" class="btn btn-info">
                                   <i class="fas fa-edit"></i>
                                 </a>
-                                <button type="button" onclick="performDestroy({{ $meal->id }} , this)" class="btn btn-danger">
+                                <button type="button" onclick="performDestroy({{ $article->id }} , this)" class="btn btn-danger">
                                     <i class="fas fa-trash-alt"></i>
                                   </button>
                               </div>
@@ -98,7 +84,7 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            {{ $meals->links()}}
+            {{ $articles->links()}}
           </div>
         </div>
 
@@ -112,7 +98,7 @@
 @section('scripts')
   <script>
     function performDestroy(id , referance){
-      let url = '/cms/admin/Meals/'+id;
+      let url = '/cms/admin/articles/'+id;
       confirmDestroy(url , referance );
     }
 </script>

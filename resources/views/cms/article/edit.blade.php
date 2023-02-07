@@ -1,8 +1,8 @@
 @extends('cms.parent')
 
-@section('title' , 'Meal')
-@section('main_title' , 'Edit Meal')
-@section('sub_title' , 'edit meal')
+@section('title' , 'Article')
+@section('main_title' , 'Edit Article')
+@section('sub_title' , 'edit Article')
 
 @section('styles')
 
@@ -12,54 +12,62 @@
 @section('content')
 <div class="card card-primary">
     <div class="card-header">
-      <h3 class="card-title">Edit Data of Meal</h3>
+      <h3 class="card-title">Edit Data of Article</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
     <form>
         <div class="card-body">
+
             <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Category</label>
-                  <select class="form-control select2" id="category_id" name="category_id" style="width: 100%;">
-                    <option value="{{ $meals->category->id }}" selected> {{ $meals->category->name }} </option>
-                    @foreach($categories as $category)
-                    @if($meals->category->id != $category->id)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endif
-                  @endforeach
-                  </select>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Author</label>
+                    <select class="form-control select2" id="author_id" name="author_id" style="width: 100%;">
+                      <option value="{{ $articles->author->id }}" selected> {{ $articles->author->name }} </option>
+                      @foreach($authors as $author)
+                      @if($articles->author->id != $author->id)
+                      <option value="{{ $author->id }}">{{ $author->name }}</option>
+                      @endif
+                    @endforeach
+                    </select>
+                  </div>
                 </div>
               </div>
-            </div>
 
         <div class="row">
-            <div class="form-group">
-                <label for="name">Meal Name</label>
-                <input type="text" class="form-control" value="{{ $meals->name }}" name="name" id="name" placeholder="Enter Meal name">
+              <div class="form-group col-md-6">
+                <label for="name">Article Title</label>
+                <input type="text" class="form-control" value="{{ $articles->title }}" name="title" id="title" placeholder="Enter Article Title">
               </div>
-            <div class="form-group">
-                <label for="description">Meal Description</label>
-                <input type="text" class="form-control" value="{{ $meals->description }}" name="description" id="description" placeholder="Enter Meal Description">
-              </div>
-          </div>
-        <div class="row">
-            <div class="form-group">
-                <label for="price">Meal Price</label>
-                <input type="text" class="form-control" value="{{ $meals->price }}"  name="price" id="price" placeholder="Enter Meal Price">
-              </div>
-            <div class="form-group">
-                <label for="meal_number">Meal Number</label>
-                <input type="text" class="form-control"  value="{{ $meals->meal_number }}" name="meal_number" id="meal_number" placeholder="Enter Meal Number">
+            <div class="form-group col-md-6">
+                <label for="description">Article Description</label>
+                <input type="text" class="form-control" value="{{ $articles->description }}" name="description" id="description" placeholder="Enter Article Description">
               </div>
           </div>
+
+
 
              <div class="row">
+
+                <div class="form-group col-md-6">
+                    <label>Article Category</label>
+                    <select class="form-control select2" id="article_category_id" name="article_category_id" style="width: 100%;">
+                      <option value="{{ $articles->articleCategory->id }}" selected> {{ $articles->articleCategory->name }} </option>
+                      @foreach($article_categories as $article_category)
+                      @if($articles->articleCategory->id != $article_category->id)
+                      <option value="{{ $article_category->id }}">{{ $article_category->name }}</option>
+                      @endif
+                    @endforeach
+                    </select>
+                  </div>
+
               <div class="form-group col-md-6">
-              <label for="image">Meal Image</label>
-              <input type="file" class="form-control" value="{{ $meals->image }}"  id="image" name="image" placeholder="Enter Profile Meal">
+              <label for="image">Article Image</label>
+              <input type="file" class="form-control" value="{{ $articles->image }}"  id="image" name="image" placeholder="Enter Article Image">
             </div>
+
+
              </div>
 
 
@@ -69,8 +77,8 @@
       <!-- /.card-body -->
 
       <div class="card-footer">
-        <button type="button" onclick="performUpdate({{$meals->id}})" class="btn btn-primary">Update</button>
-        <a href="{{ route('meals.index') }}" type="button" class="btn btn-secondary">Cancel</a>
+        <button type="button" onclick="performUpdate({{$articles->id}})" class="btn btn-primary">Update</button>
+        <a href="{{ route('articles.index') }}" type="button" class="btn btn-secondary">Cancel</a>
       </div>
     </form>
   </div>
@@ -84,13 +92,12 @@ function performUpdate(id){
 
 let formData = new FormData();
 
-formData.append('name',document.getElementById('name').value);
+formData.append('title',document.getElementById('title').value);
 formData.append('description',document.getElementById('description').value);
-formData.append('price',document.getElementById('price').value);
-formData.append('category_id',document.getElementById('category_id').value);
-formData.append('meal_number',document.getElementById('meal_number').value);
+formData.append('article_category_id',document.getElementById('article_category_id').value);
+formData.append('author_id',document.getElementById('author_id').value);
 formData.append('image',document.getElementById('image').files[0]);
-storeRoute('/cms/admin/update-meals/' +id , formData);
+storeRoute('/cms/admin/update-articles/' +id , formData);
 }
 
 </script>

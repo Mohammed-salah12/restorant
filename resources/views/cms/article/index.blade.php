@@ -1,8 +1,8 @@
 @extends('cms.parent')
 
-@section('title' , 'Meal')
-@section('main_title' , 'Index Meal')
-@section('sub_title' , 'index meal')
+@section('title' , 'Article')
+@section('main_title' , 'Index Article')
+@section('sub_title' , 'index article')
 
 @section('styles')
 
@@ -14,7 +14,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-            <a href="{{ route('createMeal' , $id) }}" type="button" class="btn btn-info">Add New Meal</a>
+            <a href="{{ route('createArticle' , $id) }}" type="button" class="btn btn-info">Add New Article</a>
             <a href="{{ route('categories.index') }}" type="button" class="btn btn-secondary">Back to Categories</a>
         </div>
         <!-- /.card-header -->
@@ -22,33 +22,29 @@
           <table class="table table-hover text-nowrap">
             <thead>
               <tr>
-                <th>Meal Number</th>
                 <th>Image</th>
-                <th>Name</th>
-                <th>Price</th>
+                <th>Title</th>
                 <th>Category</th>
                 <th>Description</th>
                 <th>Setting</th>
               </tr>
             </thead>
             <tbody>
-                @foreach ($meals as $meal )
+                @foreach ($articles as $article )
                 <tr>
-                    <td>{{ $meal->meal_number }}</td>
                     <td>
-                        <img class="img-circle img-bordered-sm" src="{{asset('storage/images/meal/'.$meal->image)}}" width="60" height="60" alt="User Image">
+                        <img class="img-circle img-bordered-sm" src="{{asset('storage/images/article/'.$article->image)}}" width="60" height="60" alt="User Image">
                      </td>
-                    <td>{{ $meal->name }}</td>
-                    <td>{{ $meal->price }}</td>
-                    <td>{{ $meal->category->name }}</td>
-                    <td>{{ $meal->description }}</td>
+                    <td>{{ $article->title }}</td>
+                    <td>{{ $article->articleCategory->name }}</td>
+                    <td>{{ $article->description }}</td>
 
                     <td>
                         <div class="btn-group">
-                            <a href="{{ route('meals.edit' , $meal->id ) }}" type="button" class="btn btn-info">
+                            <a href="{{ route('Articles.edit' , $article->id ) }}" type="button" class="btn btn-info">
                               <i class="fas fa-edit"></i>
                             </a>
-                            <button type="button" onclick="performDestroy({{ $meal->id }} , this)" class="btn btn-danger">
+                            <button type="button" onclick="performDestroy({{ $article->id }} , this)" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                               </button>
                           </div>
@@ -62,7 +58,7 @@
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
-      {{ $meals->links() }}
+      {{ $articles->links() }}
     </div>
   </div>
 @endsection
@@ -71,7 +67,7 @@
 @section('scripts')
   <script>
     function performDestroy(id , referance){
-      let url = '/cms/admin/meals/'+id;
+      let url = '/cms/admin/articles/'+id;
       confirmDestroy(url , referance );
     }
 </script>

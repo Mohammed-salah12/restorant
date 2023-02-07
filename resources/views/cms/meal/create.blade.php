@@ -25,21 +25,21 @@
 
 
         <div class="row">
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="name">Meal Name</label>
                 <input type="text" class="form-control" name="name" id="name" placeholder="Enter Meal name">
               </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="description">Meal Description</label>
                 <input type="text" class="form-control" name="description" id="description" placeholder="Enter Meal Description">
               </div>
           </div>
         <div class="row">
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="price">Meal Price</label>
                 <input type="text" class="form-control" name="price" id="price" placeholder="Enter Meal Price">
               </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="meal_number">Meal Number</label>
                 <input type="text" class="form-control" name="meal_number" id="meal_number" placeholder="Enter Meal Number">
               </div>

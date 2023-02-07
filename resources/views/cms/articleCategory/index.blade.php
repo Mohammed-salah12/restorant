@@ -1,8 +1,8 @@
 @extends('cms.parent')
 
-@section('title' , 'Category')
-@section('main_title' , 'Index Category')
-@section('sub_title' , 'index Category')
+@section('title' , 'Article Category')
+@section('main_title' , 'Index Article Category')
+@section('sub_title' , 'index article category')
 
 @section('styles')
 
@@ -18,8 +18,8 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              {{-- <h3 class="card-title"> Index Data of Category</h3> --}}
-              {{-- <a href="{{ route('categories.create') }}" type="button" class="btn btn-info">Add New Category</a> --}}
+              {{-- <h3 class="card-title"> Index Data of article_category</h3> --}}
+              {{-- <a href="{{ route('article_categories.create') }}" type="button" class="btn btn-info">Add New article_category</a> --}}
               <form action="" method="get" style="margin-bottom:2%;">
                 <div class="row">
                     <div class="input-icon col-md-2">
@@ -29,30 +29,17 @@
                               <i class="flaticon2-search-1 text-muted"></i>
                           </span>
                         </div>
-
-
                 <div class="col-md-4">
                       <button class="btn btn-success btn-md" type="submit"> filter</button>
-                      <a href="{{route('categories.index')}}"  class="btn btn-danger"> end filter</a>
+                      <a href="{{route('article_categories.index')}}"  class="btn btn-danger"> end filter</a>
                       {{-- @can('Create-City') --}}
 
-                      <a href="{{route('categories.create')}}"><button type="button" class="btn btn-md btn-primary"> Add new Category </button></a>
+                      <a href="{{route('article_categories.create')}}"><button type="button" class="btn btn-md btn-primary"> Add new Category </button></a>
                       {{-- @endcan --}}
                 </div>
 
                      </div>
             </form>
-              <div class="card-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                  <div class="input-group-append">
-                    <button type="submit" class="btn btn-default">
-                      <i class="fas fa-search"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
@@ -60,31 +47,29 @@
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Category Name</th>
-                    <th>Number of Meals</th>
+                    <th>Name of Article's Category</th>
+                    <th>Number of Articles</th>
                     <th>Seeting</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($categories as $category )
+                  @foreach ($article_categories as $article_category )
                   {{-- <td><span class="tag tag-success">Approved</span></td> --}}
 
 
 
 
                   <tr>
-                      <td>{{$category->id}}</td>
-                      <td>{{ $category->name }}</td>
-                      <td><a href="{{route('indexMeal',['id'=>$category->id])}}"
-                        class="btn btn-info">({{$category->meals_count}})
-                        meal/s</a> </td>
+                      <td>{{$article_category->id}}</td>
+                      <td>{{ $article_category->name }}</td>
+                      <td><span class="badge bg-info">({{$article_category->articles_count}}) Cities</td>
                       <td>
                           <div class="btn group">
-                            <a href="{{route('categories.edit' , $category->id)}}" type="button" class="btn btn-info">
+                            <a href="{{route('article_categories.edit' , $article_category->id)}}" type="button" class="btn btn-info">
                               <i class="fas fa-edit"></i>
                               {{-- <i class="far fa-edit"></i> --}}
                             </a>
-                            <a href="#" type="button" onclick="performDestroy({{ $category->id }} , this)" class="btn btn-danger">
+                            <a href="#" type="button" onclick="performDestroy({{ $article_category->id }} , this)" class="btn btn-danger">
                               <i class="fas fa-trash-alt"></i>
                             </a>
 
@@ -102,7 +87,7 @@
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
-          {{ $categories->links()}}
+          {{ $article_categories->links()}}
         </div>
       </div>
 
@@ -115,7 +100,7 @@
 @section('scripts')
   <script>
     function performDestroy(id , referance){
-      let url = '/cms/admin/categories/'+id;
+      let url = '/cms/admin/article_categories/'+id;
       confirmDestroy(url , referance );
     }
 </script>
