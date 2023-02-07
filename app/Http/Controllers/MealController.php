@@ -29,8 +29,9 @@ class MealController extends Controller
 
     public function index()
     {
-        $meals = Meal::with('category')->orderBy('id' , 'desc')->paginate(5);
-        return response()->view('cms.meal.index',compact('meals'));
+
+        $meals = Meal::orderBy('id' , 'desc')->paginate(5);
+        return response()->view('cms.meal.indexAll' , compact('meals'));
     }
 
     /**

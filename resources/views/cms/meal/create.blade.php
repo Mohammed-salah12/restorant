@@ -61,7 +61,8 @@
 
       <div class="card-footer">
         <button type="button" onclick="performStore()" class="btn btn-primary">Store</button>
-        <a href="{{ route('meals.index') }}" type="button" class="btn btn-info">Return Back</a>
+        <a href="{{ route('indexMeal' , $id) }}" type="button" class="btn btn-info">Return Back</a>
+
       </div>
     </form>
   </div>

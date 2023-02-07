@@ -98,7 +98,7 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            {{ $Meals->links()}}
+            {{ $meals->links()}}
           </div>
         </div>
 

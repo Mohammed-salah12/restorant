@@ -15,6 +15,7 @@
       <div class="card">
         <div class="card-header">
             <a href="{{ route('createMeal' , $id) }}" type="button" class="btn btn-info">Add New Meal</a>
+            <a href="{{ route('categories.index') }}" type="button" class="btn btn-secondary">Back to Categories</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive p-0">
