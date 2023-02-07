@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArticleCategoryController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MealController;
 use App\Http\Controllers\PermissionController;
@@ -67,7 +69,7 @@ Route::prefix('cms/admin')->group(function () {
 
     Route::resource('article_categories' , ArticleCategoryController::class);
     Route::post('update-article_categories/{id}' , [ArticleCategoryController::class , 'update'])->name('update-article_categories');
-    
+
     Route::get('/create/articles/{id}', [ArticleController::class, 'createArticle'])->name('createArticle');
     Route::get('/index/articles/{id}', [ArticleController::class, 'indexArticle'])->name('indexArticle');
 
