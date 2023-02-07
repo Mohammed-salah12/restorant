@@ -17,8 +17,8 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        //withCount('articles')->
-        $authors = Author::orderBy('id' , 'desc')->paginate(5);
+        //
+        $authors = Author::withCount('articles')->orderBy('id' , 'desc')->paginate(5);
         return response()->view('cms.author.index', compact('authors'));
     }
 

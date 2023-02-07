@@ -45,7 +45,7 @@
                                     <th>Image</th>
                                     <th>Full Name</th>
                                     <th>Email</th>
-                                    {{-- <th>Articles</th> --}}
+                                    <th>Articles</th>
                                     <th>Address</th>
                                     <th>Setting</th>
                                 </tr>
@@ -62,9 +62,9 @@
                                     </td>
                                     <td>{{ ($author->user->first_name . ' ' . $author->user->last_name ) ?? "" }}</td>
                                     <td>{{ $author->email  }}</td>
-                                    {{-- <td><a href="{{route('indexArticle',['id'=>$author->id])}}"
+                                    <td><a href="{{route('indexArticle',['id'=>$author->id])}}"
                                         class="btn btn-info">({{$author->articles_count}})
-                                        article/s</a> </td> --}}
+                                        article/s</a> </td>
                                     <td>{{ $author->user->address ?? ""}}</td>
 
                                     <td>
