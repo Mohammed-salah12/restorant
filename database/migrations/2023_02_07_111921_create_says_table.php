@@ -18,7 +18,7 @@ class CreateSaysTable extends Migration
             $table->string('message');
             $table->string('name');
             $table->string('image')->nullable();
-            $table->string('rate');
+            $table->integer('rate');
             $table->string('email');
 
             $table->timestamps();
