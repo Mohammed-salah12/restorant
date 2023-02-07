@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -27,7 +28,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return response()->view('cms.admin.create' );
+        $roles = Role::where('guard_name' , 'admin')->get();
+        return response()->view('cms.admin.create' , compact('roles'));
     }
 
     /**
@@ -49,8 +51,8 @@ class AdminController extends Controller
             $isSaved = $admins->save();
             if($isSaved){
                 $users = new User();
-                // $roles = Role::findOrFail($request->get('role_id'));
-                // $admins->assignRole($roles->name);
+                $roles = Role::findOrFail($request->get('role_id'));
+                $admins->assignRole($roles->name);
 
                 if (request()->hasFile('image')) {
 

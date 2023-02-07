@@ -6,6 +6,7 @@ use App\Models\Author;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class AuthorController extends Controller
 {
@@ -28,6 +29,8 @@ class AuthorController extends Controller
      */
     public function create()
     {
+        $roles = Role::where('guard_name' , 'admin')->get();
+
         return response()->view('cms.author.create');
 
     }
@@ -51,6 +54,9 @@ class AuthorController extends Controller
             $isSaved = $authors->save();
             if($isSaved){
                 $users = new User();
+                $roles = Role::findOrFail($request->get('role_id'));
+                $authors->assignRole($roles->name);
+
                 if (request()->hasFile('image')) {
 
                     $image = $request->file('image');

@@ -28,6 +28,8 @@
   <!--  -->
   <link rel="stylesheet" href="{{ asset('cms/plugins/toastr/toastr.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <!-- Library Fontawesme -->
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.2/css/all.css" />
 
   @yield('styles')
 </head>
@@ -333,7 +335,7 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-flag"></i>
+              <i class="fa-solid fa-bars"></i>
               <p>
                 Category
                 <i class="fas fa-angle-left right"></i>
@@ -358,7 +360,33 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-flag"></i>
+                <i class="fa-solid fa-burger-soda"></i>
+                <p>
+                Meal
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('meals.index') }}" class="nav-link">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Index</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('meals.create') }}" class="nav-link">
+                  <i class="fas fa-plus-square nav-icon"></i>
+                  <p>Create</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-newspaper"></i>
               <p>
                 Article
                 <i class="fas fa-angle-left right"></i>

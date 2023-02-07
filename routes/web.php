@@ -3,6 +3,9 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MealController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolePermissionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,11 +60,14 @@ Route::prefix('cms/admin')->group(function () {
     Route::resource('categories' , CategoryController::class);
     Route::post('update-categories/{id}' , [CategoryController::class , 'update'])->name('update-categories');
 
-    Route::resource('articles' , ArticleController::class);
-    Route::post('update-articles/{id}' , [ArticleController::class , 'update'])->name('update-articles');
-
+    Route::get('/create/meals/{id}', [MealController::class, 'createMeal'])->name('createMeal');
+    Route::get('/index/meals/{id}', [MealController::class, 'indexMeal'])->name('indexMeal');
 
     Route::get('/create/articles/{id}', [ArticleController::class, 'createArticle'])->name('createArticle');
     Route::get('/index/articles/{id}', [ArticleController::class, 'indexArticle'])->name('indexArticle');
+
+    Route::resource('articles' , ArticleController::class);
+    Route::post('update-articles/{id}' , [ArticleController::class , 'update'])->name('update-articles');
+
 
 });
