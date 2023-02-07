@@ -7,7 +7,9 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\InformationController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MealController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -90,4 +92,11 @@ Route::prefix('cms/admin')->group(function () {
 
     Route::resource('bookings' , BookingController::class);
     Route::post('update-bookings/{id}' , [BookingController::class , 'update'])->name('update-bookings');
+
+    Route::resource('likes' , LikeController::class);
+    Route::post('update-likes/{id}' , [LikeController::class , 'update'])->name('update-likes');
+
+    Route::resource('comments' , CommentController::class);
+    Route::post('update-comments/{id}' , [CommentController::class , 'update'])->name('update-comments');
+
 });
