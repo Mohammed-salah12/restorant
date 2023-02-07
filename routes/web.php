@@ -5,7 +5,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\InformationController;
 use App\Http\Controllers\MealController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -82,4 +84,10 @@ Route::prefix('cms/admin')->group(function () {
 
     Route::resource('abouts' , AboutController::class);
     Route::post('update-abouts/{id}' , [AboutController::class , 'update'])->name('update-abouts');
+
+    Route::resource('informations' , InformationController::class);
+    Route::post('update-informations/{id}' , [InformationController::class , 'update'])->name('update-informations');
+
+    Route::resource('bookings' , BookingController::class);
+    Route::post('update-bookings/{id}' , [BookingController::class , 'update'])->name('update-bookings');
 });

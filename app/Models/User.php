@@ -45,4 +45,8 @@ class User extends Authenticatable
     public function actor(){
         return $this->morphTo();
     }
+
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
 }

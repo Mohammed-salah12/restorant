@@ -2,9 +2,9 @@
 
 @section('title', 'Customer Say')
 
-@section('main_title', 'Create Customer Say')
+@section('main_title', 'Update Customer Say')
 
-@section('sub_title', 'create_Customer Say')
+@section('sub_title', 'update_Customer Say')
 
 
 @section('styles')
