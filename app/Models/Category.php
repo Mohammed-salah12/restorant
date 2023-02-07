@@ -8,8 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    
+
     public function meals(){
         return $this->hasMany(Meal::class);
+    }
+
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($category) {
+            $category->meals()->delete();
+
+        });
     }
 }
