@@ -14,7 +14,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-            <a href="{{ route('meals.create') }}" type="button" class="btn btn-info">Add New Meal</a>
+            <a href="{{ route('createMeal' , $id) }}" type="button" class="btn btn-info">Add New Meal</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive p-0">
@@ -61,7 +61,7 @@
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
-      {{ $cities->links() }}
+      {{ $meals->links() }}
     </div>
   </div>
 @endsection

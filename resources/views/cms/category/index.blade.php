@@ -69,11 +69,15 @@
                   @foreach ($categories as $category )
                   {{-- <td><span class="tag tag-success">Approved</span></td> --}}
 
+
+
+
                   <tr>
                       <td>{{$category->id}}</td>
                       <td>{{ $category->name }}</td>
-                      <td><span class="badge bg-info">({{$category->meals_count}}) Meal</td>
-
+                      <td><a href="{{route('indexMeal',['id'=>$category->id])}}"
+                        class="btn btn-info">({{$category->meals_count}})
+                        meal/s</a> </td>
                       <td>
                           <div class="btn group">
                             <a href="{{route('categories.edit' , $category->id)}}" type="button" class="btn btn-info">

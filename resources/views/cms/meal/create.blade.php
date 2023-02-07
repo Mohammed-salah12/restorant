@@ -19,16 +19,8 @@
     <form>
       <div class="card-body">
         <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Category</label>
-                <select class="form-control select2" id="category_id" name="category_id" style="width: 100%;">
-                @foreach($categories as $category)
-                  <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-                </select>
-              </div>
-            </div>
+            <input type="text" name="category_id" id="category_id" value="{{$id}}"
+                  class="form-control form-control-solid" hidden/>
           </div>
 
 

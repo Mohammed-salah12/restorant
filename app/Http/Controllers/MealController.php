@@ -13,6 +13,20 @@ class MealController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function indexMeal($id)
+     {
+         //
+         $meals = Meal::where('category_id', $id)->orderBy('created_at', 'desc')->paginate(5);
+         return response()->view('cms.meal.index', compact('meals','id'));
+     }
+
+     public function createMeal($id)
+     {
+         $categories = Category::all();
+         return response()->view('cms.meal.create' , compact( 'categories' , 'id'));
+     }
+
     public function index()
     {
         $meals = Meal::with('category')->orderBy('id' , 'desc')->paginate(5);
