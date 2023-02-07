@@ -446,6 +446,36 @@
                         </li>
 
 
+                        <li class="nav-item">
+
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-bars"></i>
+                                <p>
+                                   Customer  Say
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                {{-- @can('index-category') --}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('says.index') }}" class="nav-link">
+                                            <i class="fas fa-list nav-icon"></i>
+                                            <p>Index</p>
+                                        </a>
+                                    </li>
+                                {{-- @endcan --}}
+                                {{-- @can('create-category') --}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('says.create') }}" class="nav-link">
+                                            <i class="fas fa-plus-square nav-icon"></i>
+                                            <p>Create</p>
+                                        </a>
+                                    </li>
+                                {{-- @endcan --}}
+
+                            </ul>
+                        </li>
+
 
                         <li class="nav-header">SETTING</li>
 

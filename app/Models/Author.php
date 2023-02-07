@@ -14,4 +14,7 @@ class Author extends Authenticatable
     public function user(){
         return $this->morphOne(User::class , 'actor' , 'actor_type' , 'actor_id' , 'id');
     }
+    public function articles(){
+        return $this->hasMany(Article::class,'author_id','id');
+    }
 }

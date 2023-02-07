@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MealController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
+use App\Http\Controllers\SayController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,11 +65,18 @@ Route::prefix('cms/admin')->group(function () {
     Route::get('/create/meals/{id}', [MealController::class, 'createMeal'])->name('createMeal');
     Route::get('/index/meals/{id}', [MealController::class, 'indexMeal'])->name('indexMeal');
 
+    Route::resource('article_categories' , ArticleCategoryController::class);
+    Route::post('update-article_categories/{id}' , [ArticleCategoryController::class , 'update'])->name('update-article_categories');
+    
     Route::get('/create/articles/{id}', [ArticleController::class, 'createArticle'])->name('createArticle');
     Route::get('/index/articles/{id}', [ArticleController::class, 'indexArticle'])->name('indexArticle');
 
     Route::resource('articles' , ArticleController::class);
     Route::post('update-articles/{id}' , [ArticleController::class , 'update'])->name('update-articles');
 
+    Route::resource('says' , SayController::class);
+    Route::post('update-says/{id}' , [SayController::class , 'update'])->name('update-says');
 
+    Route::resource('abouts' , AboutController::class);
+    Route::post('update-abouts/{id}' , [AboutController::class , 'update'])->name('update-abouts');
 });
