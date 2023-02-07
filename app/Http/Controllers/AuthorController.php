@@ -55,6 +55,8 @@ class AuthorController extends Controller
             if($isSaved){
                 $users = new User();
                 $roles = Role::findOrFail($request->get('role_id'));
+
+                
                 $authors->assignRole($roles->name);
 
                 if (request()->hasFile('image')) {
