@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\ArticleCategory;
+use App\Models\Author;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -116,7 +117,7 @@ class ArticleController extends Controller
     {
         $article_categories = ArticleCategory::all();
         $articles = Article::findOrFail($id);
-        return response()->view('cms.article.edit' , compact('article_categories' , 'articles'));
+        return response()->view('cms.article.edit' , compact('article_categories' , 'articles', 'id'));
     }
 
     /**
@@ -129,12 +130,12 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator($request->all() , [
-            'name' => 'required|string|min:3|max:30',
+            'title' => 'required|string|min:3|max:30',
 
         ] , [
-            'name.required' => 'هذا الحقل مطلوب' ,
-            'name.min' => 'لا يمكن اضافة اقل من 3 حروف' ,
-            'name.max' => 'لا يمكن أضافة اكثر من 30 حرف'
+            'title.required' => 'هذا الحقل مطلوب' ,
+            'title.min' => 'لا يمكن اضافة اقل من 3 حروف' ,
+            'title.max' => 'لا يمكن أضافة اكثر من 30 حرف'
 
         ]);
         if(! $validator->fails()){
@@ -145,8 +146,8 @@ class ArticleController extends Controller
 
                 $imageName = time() . 'image.' . $image->getClientOriginalExtension();
 
-                $image->move('storage/images/meal', $imageName);
-
+                $image->move('storage/images/article', $imageName);
+                
                 $articles->image = $imageName;
                 }
                 $articles->title = $request->get('title');

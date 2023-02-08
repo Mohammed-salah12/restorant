@@ -62,7 +62,7 @@
                   <tr>
                       <td>{{$article_category->id}}</td>
                       <td>{{ $article_category->name }}</td>
-                      <td><span class="badge bg-info">({{$article_category->articles_count}}) Cities</td>
+                      <td><span class="badge bg-info">({{$article_category->articles_count}}) Articles</td>
                       <td>
                           <div class="btn group">
                             <a href="{{route('article_categories.edit' , $article_category->id)}}" type="button" class="btn btn-info">

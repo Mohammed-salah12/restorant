@@ -1,8 +1,8 @@
 @extends('cms.parent')
 
-@section('title' , 'Article')
-@section('main_title' , 'Index Article')
-@section('sub_title' , 'index article')
+@section('title' , 'Comment')
+@section('main_title' , 'Index Comment')
+@section('sub_title' , 'index comment')
 
 @section('styles')
 
@@ -14,8 +14,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-            <a href="{{ route('createArticle' , $id) }}" type="button" class="btn btn-info">Add New Article</a>
-            <a href="{{ route('authors.index') }}" type="button" class="btn btn-secondary">Back to Authors</a>
+            <a href="{{ route('comments.create') }}" type="button" class="btn btn-info">Add New Comment</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive p-0">
@@ -23,28 +22,29 @@
             <thead>
               <tr>
                 <th>Image</th>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Description</th>
+                <th>Name</th>
+                <th>Text</th>
+                <th>Email</th>
+                <th>Article Name</th>
                 <th>Setting</th>
               </tr>
             </thead>
             <tbody>
-                @foreach ($articles as $article)
+                @foreach ($comments as $comment )
                 <tr>
                     <td>
-                        <img class="img-circle img-bordered-sm" src="{{asset('storage/images/article/'.$article->image)}}" width="60" height="60" alt="User Image">
+                        <img class="img-circle img-bordered-sm" src="{{asset('storage/images/comment/'.$comment->image)}}" width="60" height="60" alt="User Image">
                      </td>
-                    <td>{{ $article->title }}</td>
-                    <td>{{ $article->articleCategory->name }}</td>
-                    <td>{{ $article->description }}</td>
-
+                    <td>{{ $comment->name }}</td>
+                    <td>{{ $comment->text }}</td>
+                    <td>{{ $comment->email }}</td>
+                    <td>{{ $comment->article->name }}</td>
                     <td>
                         <div class="btn-group">
-                            <a href="{{ route('articles.edit' , $article->id ) }}" type="button" class="btn btn-info">
+                            <a href="{{ route('comments.edit' , $comment->id ) }}" type="button" class="btn btn-info">
                               <i class="fas fa-edit"></i>
                             </a>
-                            <button type="button" onclick="performDestroy({{ $article->id }} , this)" class="btn btn-danger">
+                            <button type="button" onclick="performDestroy({{ $comment->id }} , this)" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                               </button>
                           </div>
@@ -58,7 +58,7 @@
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
-      {{ $articles->links() }}
+      {{ $comments->links() }}
     </div>
   </div>
 @endsection
@@ -67,7 +67,7 @@
 @section('scripts')
   <script>
     function performDestroy(id , referance){
-      let url = '/cms/admin/articles/'+id;
+      let url = '/cms/admin/comments/'+id;
       confirmDestroy(url , referance );
     }
 </script>

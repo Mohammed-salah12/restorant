@@ -18,8 +18,8 @@ class CreateLikesTable extends Migration
             $table->string('like')->nullable();
             $table->foreignId('user_id');
             $table->foreign('user_id')->on('users')->references('id')->cascadeOnDelete();
-            $table->foreignId('comment_id');
-            $table->foreign('comment_id')->on('comments')->references('id')->cascadeOnDelete();
+            $table->foreignId('article_id');
+            $table->foreign('article_id')->on('articles')->references('id')->cascadeOnDelete();
             $table->timestamps();
         });
     }
