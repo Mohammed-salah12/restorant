@@ -20,19 +20,8 @@
         <div class="card-body">
 
             <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label>Author</label>
-                    <select class="form-control select2" id="author_id" name="author_id" style="width: 100%;">
-                      <option value="{{ $articles->author->id }}" selected> {{ $articles->author->name }} </option>
-                      @foreach($authors as $author)
-                      @if($articles->author->id != $author->id)
-                      <option value="{{ $author->id }}">{{ $author->name }}</option>
-                      @endif
-                    @endforeach
-                    </select>
-                  </div>
-                </div>
+                <input type="text" name="author_id" id="author_id" value="{{$id}}"
+                      class="form-control form-control-solid" hidden/>
               </div>
 
         <div class="row">

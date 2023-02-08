@@ -56,7 +56,6 @@
                   <tbody>
                     @foreach ($articles as $article )
                     <tr>
-                        <td>{{ $article->article_number }}</td>
                         <td>
                             <img class="img-circle img-bordered-sm" src="{{asset('storage/images/article/'.$article->image)}}" width="60" height="60" alt="User Image">
                          </td>

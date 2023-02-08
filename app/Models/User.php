@@ -45,4 +45,5 @@ class User extends Authenticatable
     public function actor(){
         return $this->morphTo();
     }
+
 }

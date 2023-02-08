@@ -13,6 +13,10 @@ class Category extends Model
         return $this->hasMany(Meal::class);
     }
 
+    public function bookings(){
+        return $this->hasMany(Booking::class);
+    }
+
     protected static function boot() {
         parent::boot();
 
