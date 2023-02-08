@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\AdminEmail;
-use App\Models\Admin;
 use App\Models\User;
+use App\Models\Viewer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Spatie\Permission\Models\Role;
 
-class AdminController extends Controller
+class ViewerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +16,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = Admin::orderBy('id' , 'desc')->paginate(5);
-        return response()->view('cms.admin.index', compact('admins'));
+        $viewers = Viewer::orderBy('id' , 'desc')->paginate(5);
+        return response()->view('cms.viewer.index', compact('viewers'));
     }
 
     /**
@@ -30,8 +27,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $roles = Role::where('guard_name' , 'admin')->get();
-        return response()->view('cms.admin.create' , compact('roles'));
+        return response()->view('cms.viewer.create');
+
     }
 
     /**
@@ -43,48 +40,40 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $validator = Validator($request->all() ,[
-            'email' => 'required|email',
 
         ]);
         if(! $validator->fails()){
-            $admins = new Admin();
-            $admins->email = $request->get('email');
-            $admins->password = Hash::make($request->get('password'));
-            $isSaved = $admins->save();
+            $viewers = new Viewer();
+            $viewers->email = $request->get('email');
+            $viewers->password = Hash::make($request->get('password'));
+            $isSaved = $viewers->save();
             if($isSaved){
                 $users = new User();
-                $roles = Role::findOrFail($request->get('role_id'));
-                $admins->assignRole($roles->name);
-
                 if (request()->hasFile('image')) {
 
                     $image = $request->file('image');
 
                     $imageName = time() . 'image.' . $image->getClientOriginalExtension();
 
-                    $image->move('storage/images/admin', $imageName);
+                    $image->move('storage/images/viewer', $imageName);
 
                     $users->image = $imageName;
                     }
+                    $users->first_name = $request->get('first_name');
+                    $users->last_name = $request->get('last_name');
+                    $users->mobile = $request->get('mobile');
+                    $users->address = $request->get('address');
+                    $users->DOB = $request->get('DOB');
+                    $users->actor()->associate($viewers);
 
-                $users->first_name = $request->get('first_name');
-                $users->last_name = $request->get('last_name');
-                $users->mobile = $request->get('mobile');
-                $users->address = $request->get('address');
-                $users->DOB = $request->get('DOB');
-                $users->actor()->associate($admins);
+                    $isSaved = $users->save();
 
-                $isSaved = $users->save();
+                    return response()->json(['icon' => 'success' , 'title' => 'Created is Successfully'] , 200);
 
-
-                Mail::to($admins->email)->send(new AdminEmail($admins->email));
-
-                return response()->json(['icon' => 'success' , 'title' => 'Created is Successfully'] , 200);
-
+                }
+            }else{
+                    return response()->json(['icon' => 'error' , 'title'=>$validator->getMessageBag()->first()] , 400);
             }
-        }else{
-                return response()->json(['icon' => 'error' , 'title'=>$validator->getMessageBag()->first()] , 400);
-        }
     }
 
     /**
@@ -106,10 +95,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $admins = Admin::findOrFail($id);
-        $roles = Role::where('guard_name' , 'admin')->get();
-
-        return response()->view('cms.admin.edit' , compact('admins' , 'roles' ));
+        $viewers = Viewer::findOrFail($id);
+        return response()->view('cms.viewer.edit' , compact('viewers'));
     }
 
     /**
@@ -122,17 +109,14 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator($request->all() , [
-            'password' => 'nullable',
         ]);
 
         if(! $validator->fails()){
-            $admins = Admin::findOrFail($id);
-            $admins->email = $request->get('email');
-            $isUpdated = $admins->save();
+            $viewers = Viewer::findOrFail($id);
+            $viewers->email = $request->get('email');
+            $isUpdated = $viewers->save();
             if($isUpdated){
-                $users = $admins->user;
-                $roles = Role::findOrFail($request->get('role_id'));
-                $admins->assignRole($roles->name);
+                $users = $viewers->user;
 
                 if (request()->hasFile('image')) {
 
@@ -140,20 +124,21 @@ class AdminController extends Controller
 
                     $imageName = time() . 'image.' . $image->getClientOriginalExtension();
 
-                    $image->move('storage/images/admin', $imageName);
+                    $image->move('storage/images/viewer', $imageName);
 
                     $users->image = $imageName;
                     }
+
                     $users->first_name = $request->get('first_name');
                     $users->last_name = $request->get('last_name');
                     $users->mobile = $request->get('mobile');
                     $users->address = $request->get('address');
                     $users->DOB = $request->get('DOB');
-                    $users->actor()->associate($admins);
+                    $users->actor()->associate($viewers);
 
                 $isUpdated = $users->save();
 
-                return ['redirect'=>route('admins.index')];
+                return ['redirect'=>route('viewers.index')];
 
             }
         }
@@ -170,7 +155,6 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        $admins = Admin::destroy($id);
-
-   }
+        $viewers = Viewer::destroy($id);
+    }
 }

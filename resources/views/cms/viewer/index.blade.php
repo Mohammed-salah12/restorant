@@ -1,10 +1,10 @@
 @extends('cms.parent')
 
-@section('title' , 'Admin')
+@section('title' , 'Viewer')
 
-@section('main_title' , 'Index Admin')
+@section('main_title' , 'Index Viewer')
 
-@section('sub_title' , 'index_Admin')
+@section('sub_title' , 'index_Viewer')
 
 
 @section('styles')
@@ -21,20 +21,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        {{-- <h3 class="card-title">Index Data Of Admin</h3> --}}
-                        <a href="{{ route('admins.create') }}" type="button" class="btn btn-info">Add New Admin</a>
-                        <div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right"
-                                    placeholder="Search">
-
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        {{-- <h3 class="card-title">Index Data Of Viewer</h3> --}}
+                        <a href="{{ route('viewers.create') }}" type="button" class="btn btn-info">Add New Viewer</a>
+                      
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
@@ -51,31 +40,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($admins as $admin)
+                                @foreach($viewers as $viewer)
                                 {{-- <td><span class="tag tag-success">Approved</span></td> --}}
                                 <tr>
-                                    <td>{{ $admin->id }}</td>
+                                    <td>{{ $viewer->id }}</td>
                                     <td>
                                         <img class="img-circle img-bordered-sm"
-                                             src="{{ asset('storage/images/admin/'.$admin->user->image) }}"
+                                             src="{{ asset('storage/images/viewer/'.$viewer->user->image) }}"
                                              width="60" height="60" alt="User_Image">
                                     </td>
-                                    <td>{{ ($admin->user->first_name . ' ' . $admin->user->last_name ) ?? "" }}</td>
-                                    <td>{{ $admin->email  }}</td>
-                                    <td>{{ $admin->user->mobile ?? "" }}</td>
-                                    <td>{{ $admin->user->address ?? ""}}</td>
+                                    <td>{{ ($viewer->user->first_name . ' ' . $viewer->user->last_name ) ?? "" }}</td>
+                                    <td>{{ $viewer->email  }}</td>
+                                    <td>{{ $viewer->user->mobile ?? "" }}</td>
+                                    <td>{{ $viewer->user->address ?? ""}}</td>
                                     <td>
                                     <div class="btn group">
-                                        @can('update-admin')
-                                          <a href="{{ route('admins.edit' , $admin->id ) }}" type="button" class="btn btn-info">
+                                          <a href="{{ route('viewers.edit' , $viewer->id ) }}" type="button" class="btn btn-info">
                                             <i class="fas fa-edit"> </i>
                                          </a>
-                                         @endcan
-                                         @can('delete-admin')
-                                          <button type="button" class="btn btn-info" onclick="performDestroy({{ $admin->id }} , this)">
+                                          <button type="button" class="btn btn-info" onclick="performDestroy({{ $viewer->id }} , this)">
                                             <i class="fas fa-trash"></i>
                                           </button>
-                                          @endcan
                                           </div>
                                       </td>
 
@@ -89,7 +74,7 @@
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
-                {{ $admins->links() }}
+                {{ $viewers->links() }}
             </div>
         </div>
     </div>
@@ -100,7 +85,7 @@
 @section('scripts')
 <script>
   function performDestroy(id , reference){
-    let url = "/cms/admin/admins/"+id;
+    let url = "/cms/admin/viewers/"+id;
     confirmDestroy(url, reference);
   }
 

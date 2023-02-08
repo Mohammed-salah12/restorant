@@ -15,6 +15,9 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\SayController;
+use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\ViewerController;
+use App\Mail\AdminEmail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,10 +43,15 @@ Route::prefix('cms/')->middleware('guest:admin,author')->group(function(){
 Route::prefix('cms/admin/')->middleware('auth:admin,author')->group(function(){
     Route::get('logout' , [UserAuthController::class , 'logout'] )->name('view.test');
 
+    Route::get('change_password' , [UserAuthController::class , 'changePassword'])->name('change_password');
+    Route::post('update_password' , [UserAuthController::class , 'updatePassword'])->name('update_password');
+
+    Route::get('edit-profile-admin' , [UserAuthController::class , 'editProfile'] )->name('edit-profile-admin');
+    Route::post('update-profile' , [UserAuthController::class , 'UpdateProfile'] )->name('update-profile');
 });
 
 
-Route::prefix('cms/admin')->group(function () {
+Route::prefix('cms/admin')->middleware('auth:admin,author')->group(function () {
     Route::view('' , 'cms.parent');
     Route::view('temp' , 'cms.temp');
 
@@ -52,6 +60,9 @@ Route::prefix('cms/admin')->group(function () {
 
     Route::resource('authors' , AuthorController::class);
     Route::post('update-authors/{id}' , [AuthorController::class , 'update'])->name('update-authors');
+
+    Route::resource('viewers' , ViewerController::class);
+    Route::post('update-viewers/{id}' , [ViewerController::class , 'update'])->name('update-viewers');
 // ////
     Route::resource('roles' , RoleController::class);
     Route::post('update-roles/{id}' , [RoleController::class , 'update'])->name('update-roles');
@@ -99,4 +110,8 @@ Route::prefix('cms/admin')->group(function () {
     Route::resource('comments' , CommentController::class);
     Route::post('update-comments/{id}' , [CommentController::class , 'update'])->name('update-comments');
 
+});
+
+Route::get('email' , function(){
+    return new AdminEmail();
 });

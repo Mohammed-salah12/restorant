@@ -69,12 +69,17 @@
 
                                     <td>
                                     <div class="btn group">
+                                        @can('update-author')
                                           <a href="{{ route('authors.edit' , $author->id ) }}" type="button" class="btn btn-info">
                                             <i class="fas fa-edit"> </i>
                                          </a>
+                                         @endcan
+                                         @can('delete-author')
                                           <button type="button" class="btn btn-info" onclick="performDestroy({{ $author->id }} , this)">
                                             <i class="fas fa-trash"></i>
                                           </button>
+                                          @endcan
+
                                           </div>
                                       </td>
 
