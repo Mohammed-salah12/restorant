@@ -47,7 +47,7 @@
 
                         <div class="form-group col-md-6">
                             <label for="rate">Rate</label>
-                            <input type="text" class="form-control" id="rate" name="rate"
+                            <input type="number" class="form-control" id="rate" name="rate"
                                 placeholder="Enter Customer rate">
                         </div>
                     </div>

@@ -2,9 +2,9 @@
 
 @section('title', 'Customer Say')
 
-@section('main_title', 'Create Customer Say')
+@section('main_title', 'Update Customer Say')
 
-@section('sub_title', 'create_Customer Say')
+@section('sub_title', 'update_Customer Say')
 
 
 @section('styles')
@@ -47,7 +47,7 @@
 
                         <div class="form-group col-md-6">
                             <label for="rate">Rate</label>
-                            <input type="text" class="form-control" id="rate" name="rate"
+                            <input type="number" class="form-control" id="rate" name="rate"
                             value="{{ $says->rate }}" placeholder="Enter Customer rate">
                         </div>
                     </div>

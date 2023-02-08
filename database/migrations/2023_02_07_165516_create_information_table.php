@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSaysTable extends Migration
+class CreateInformationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateSaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('says', function (Blueprint $table) {
+        Schema::create('information', function (Blueprint $table) {
             $table->id();
-            $table->string('message');
-            $table->string('name');
-            $table->string('image')->nullable();
-            $table->integer('rate');
-            $table->string('email');
+            $table->string('map');
+            $table->string('mobile')->unique();
+            $table->string('address')->nullable();
+            $table->string('email')->unique();
 
             $table->timestamps();
         });
@@ -32,6 +31,6 @@ class CreateSaysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('says');
+        Schema::dropIfExists('information');
     }
 }

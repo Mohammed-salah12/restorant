@@ -476,6 +476,96 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item">
+
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-bars"></i>
+                                <p>
+                                   About us
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                {{-- @can('index-category') --}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('abouts.index') }}" class="nav-link">
+                                            <i class="fas fa-list nav-icon"></i>
+                                            <p>Index</p>
+                                        </a>
+                                    </li>
+                                {{-- @endcan --}}
+                                {{-- @can('create-category') --}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('abouts.create') }}" class="nav-link">
+                                            <i class="fas fa-plus-square nav-icon"></i>
+                                            <p>Create</p>
+                                        </a>
+                                    </li>
+                                {{-- @endcan --}}
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-bars"></i>
+                                <p>
+                                   Informations
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                {{-- @can('index-category') --}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('informations.index') }}" class="nav-link">
+                                            <i class="fas fa-list nav-icon"></i>
+                                            <p>Index</p>
+                                        </a>
+                                    </li>
+                                {{-- @endcan --}}
+                                {{-- @can('create-category') --}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('informations.create') }}" class="nav-link">
+                                            <i class="fas fa-plus-square nav-icon"></i>
+                                            <p>Create</p>
+                                        </a>
+                                    </li>
+                                {{-- @endcan --}}
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-bars"></i>
+                                <p>
+                                   Bookings
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                {{-- @can('index-category') --}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('bookings.index') }}" class="nav-link">
+                                            <i class="fas fa-list nav-icon"></i>
+                                            <p>Index</p>
+                                        </a>
+                                    </li>
+                                {{-- @endcan --}}
+                                {{-- @can('create-category') --}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('bookings.create') }}" class="nav-link">
+                                            <i class="fas fa-plus-square nav-icon"></i>
+                                            <p>Create</p>
+                                        </a>
+                                    </li>
+                                {{-- @endcan --}}
+
+                            </ul>
+                        </li>
+
 
                         <li class="nav-header">SETTING</li>
 
