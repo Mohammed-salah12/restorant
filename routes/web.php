@@ -119,6 +119,9 @@ Route::prefix('cms/admin')->middleware('auth:admin,author')->group(function () {
 
     Route::get('article-restore/{id}', [ArticleController::class, 'restore']);
     Route::get('article-delete/{id}', [ArticleController::class, 'forceDelete']);
+
+    Route::get('article-bin', [ArticleController::class, 'indexBin']);
+    Route::get('meal-bin', [MealController::class, 'indexBin']);
 });
 
 Route::get('email' , function(){
