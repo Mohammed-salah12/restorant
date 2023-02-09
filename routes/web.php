@@ -112,7 +112,13 @@ Route::prefix('cms/admin')->middleware('auth:admin,author')->group(function () {
     Route::post('update-comments/{id}' , [CommentController::class , 'update'])->name('update-comments');
 
     Route::resource('subcategories' , SubcategoryController::class);
-Route::post('update-subcategories/{id}' , [SubcategoryController::class , 'update'])->name('update-subcategories');
+    Route::post('update-subcategories/{id}' , [SubcategoryController::class , 'update'])->name('update-subcategories');
+
+    Route::get('meal-restore/{id}', [MealController::class, 'restore']);
+    Route::get('meal-delete/{id}', [MealController::class, 'forceDelete']);
+
+    Route::get('article-restore/{id}', [ArticleController::class, 'restore']);
+    Route::get('article-delete/{id}', [ArticleController::class, 'forceDelete']);
 });
 
 Route::get('email' , function(){
