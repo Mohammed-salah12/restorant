@@ -62,6 +62,7 @@
                     <th>ID</th>
                     <th>subgategory Name</th>
                     <th>Number of Meals</th>
+                    <th>Category Name</th>
                     <th>Seeting</th>
                   </tr>
                 </thead>
@@ -78,6 +79,8 @@
                       <td><a href="{{route('indexMeal',['id'=>$subgategory->id])}}"
                         class="btn btn-info">({{$subgategory->meals_count}})
                         meal/s</a> </td>
+                      <td>{{ $subgategory->category->name }}</td>
+
                       <td>
                           <div class="btn group">
                             <a href="{{route('subcategories.edit' , $subgategory->id)}}" type="button" class="btn btn-info">

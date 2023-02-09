@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Meal;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
 class MealController extends Controller
@@ -17,14 +17,14 @@ class MealController extends Controller
      public function indexMeal($id)
      {
          //
-         $meals = Meal::where('category_id', $id)->orderBy('created_at', 'desc')->paginate(5);
+         $meals = Meal::where('subcategory_id', $id)->orderBy('created_at', 'desc')->paginate(5);
          return response()->view('cms.meal.index', compact('meals','id'));
      }
 
      public function createMeal($id)
      {
-         $categories = Category::all();
-         return response()->view('cms.meal.create' , compact( 'categories' , 'id'));
+         $subcategories = Subcategory::all();
+         return response()->view('cms.meal.create' , compact( 'subcategories' , 'id'));
      }
 
     public function index()
@@ -41,8 +41,9 @@ class MealController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return response()->view('cms.meal.create' , compact('categories'));
+
+        $subcategories = Subcategory::all();
+        return response()->view('cms.meal.create' , compact('subcategories'));
     }
 
     /**
@@ -80,7 +81,7 @@ class MealController extends Controller
             $meals->description = $request->get('description');
             $meals->price = $request->get('price');
             $meals->meal_number = $request->get('meal_number');
-            $meals->category_id = $request->get('category_id');
+            $meals->subcategory_id = $request->get('subcategory_id');
 
 
             $isSaved = $meals->save();
@@ -116,9 +117,9 @@ class MealController extends Controller
      */
     public function edit($id)
     {
-        $categories = Category::all();
+        $subcategories = Subcategory::all();
         $meals = Meal::findOrFail($id);
-        return response()->view('cms.meal.edit' , compact('categories' , 'meals'));
+        return response()->view('cms.meal.edit' , compact('subcategories' , 'meals'));
     }
 
     /**
@@ -155,7 +156,7 @@ class MealController extends Controller
             $meals->description = $request->get('description');
             $meals->price = $request->get('price');
             $meals->meal_number = $request->get('meal_number');
-            $meals->category_id = $request->get('category_id');
+            $meals->subcategory_id = $request->get('subcategory_id');
 
             $isUpdate = $meals->save();
             return ['redirect' => route('meals.index')];
@@ -177,5 +178,22 @@ class MealController extends Controller
     public function destroy($id)
     {
         $meals = Meal::destroy($id);
+    }
+
+    public function restore($id){
+        $restore = Meal::onlyTrashed()->findOrFail($id)->restore();
+        if($restore){
+            return response()->json(['icon' => 'success' , 'title' => 'Restore is Successfully'] , 200);
+        }else{
+            return response()->json(['icon' => 'error' , 'title' => 'Restore is Failed'] , 400);
+        }
+    }
+    public function forceDelete($id){
+        $deleted = Meal::findOrFail($id)->forceDelete();
+        if($deleted){
+            return response()->json(['icon' => 'success' , 'title' => 'Deleted is Successfully'] , 200);
+        }else{
+            return response()->json(['icon' => 'error' , 'title' => 'Deleted is Failed'] , 400);
+        }
     }
 }

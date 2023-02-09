@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,7 @@ class SubcategoryController extends Controller
 
         $subcategories = $subcategories->paginate(5);
 
-        return response()->view('cms.subSubcategory.index' , compact('subcategories'));
+        return response()->view('cms.subcategory.index' , compact('subcategories'));
     }
 
     /**
@@ -36,7 +37,8 @@ class SubcategoryController extends Controller
      */
     public function create()
     {
-        return response()->view('cms.subSubcategory.create');
+        $categories = Category::all();
+        return response()->view('cms.subcategory.create' , compact('categories'));
     }
 
     /**
@@ -61,6 +63,7 @@ class SubcategoryController extends Controller
 
             $subcategories = new Subcategory();
             $subcategories->name = $request->get('name');
+            $subcategories->category_id = $request->get('category_id');
 
             $isSaved = $subcategories->save();
 
@@ -96,7 +99,7 @@ class SubcategoryController extends Controller
     public function edit($id)
     {
         $subcategories = Subcategory::findOrFail($id);
-        return response()->view('cms.subSubcategory.edit' , compact('subcategories'));
+        return response()->view('cms.subcategory.edit' , compact('subcategories'));
     }
 
     /**

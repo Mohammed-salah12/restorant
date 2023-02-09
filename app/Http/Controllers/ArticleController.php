@@ -15,6 +15,12 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
+     public function indexBin()
+    {
+        $articles = Article::onlyTrashed()->paginate(5);
+
+    }
      public function indexArticle($id)
      {
          //
@@ -147,7 +153,7 @@ class ArticleController extends Controller
                 $imageName = time() . 'image.' . $image->getClientOriginalExtension();
 
                 $image->move('storage/images/article', $imageName);
-                
+
                 $articles->image = $imageName;
                 }
                 $articles->title = $request->get('title');
@@ -176,5 +182,22 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         $articles = Article::destroy($id);
+    }
+
+    public function restore($id){
+        $restore = Article::onlyTrashed()->findOrFail($id)->restore();
+        if($restore){
+            return response()->json(['icon' => 'success' , 'title' => 'Restore is Successfully'] , 200);
+        }else{
+            return response()->json(['icon' => 'error' , 'title' => 'Restore is Failed'] , 400);
+        }
+    }
+    public function forceDelete($id){
+        $deleted = Article::findOrFail($id)->forceDelete();
+        if($deleted){
+            return response()->json(['icon' => 'success' , 'title' => 'Deleted is Successfully'] , 200);
+        }else{
+            return response()->json(['icon' => 'error' , 'title' => 'Deleted is Failed'] , 400);
+        }
     }
 }

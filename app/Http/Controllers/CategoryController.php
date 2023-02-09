@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
 
-        $categories = Category::withCount('meals')->orderBy('id' ,'desc');
+        $categories = Category::withCount('subcategories')->orderBy('id' ,'desc');
 
         if ($request->get('name')) {
             $categories = Category::where('name', 'like', '%' . $request->name . '%');

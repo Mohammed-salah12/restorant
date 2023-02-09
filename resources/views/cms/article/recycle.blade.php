@@ -2,32 +2,15 @@
 
 @section('title' , ' Article')
 
-@section('main-title' , 'Index Article')
+@section('main-title' , 'Article Bin')
 
-@section('sub-title' , 'index article')
+@section('sub-title' , 'article bin')
 
 @section('styles')
 
 @endsection
 
 @section('content')
-{{-- <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Simple Tables</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Simple Tables</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section> --}}
 
     <!-- Main content -->
     <section class="content">
@@ -38,7 +21,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <a href="{{ route('article-bin') }}" type="button" class="btn btn-secondary">Recycle Bin</a>
+                <a href="{{ route('article-bin') }}" type="button" class="btn btn-secondary">Back to Index</a>
 
               </div>
               <!-- /.card-header -->
@@ -64,11 +47,10 @@
                          <td>{{ $article->description }}</td>
 
                         <td>
-                            <div class="btn-group">
-                                <a href="{{ route('articles.edit' , $article->id ) }}" type="button" class="btn btn-info">
-                                  <i class="fas fa-edit"></i>
-                                </a>
                                 <button type="button" onclick="performDestroy({{ $article->id }} , this)" class="btn btn-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                  </button>
+                                <button type="button" onclick="performRestore({{ $article->id }} , this)" class="btn btn-info">
                                     <i class="fas fa-trash-alt"></i>
                                   </button>
                               </div>
@@ -97,8 +79,16 @@
 @section('scripts')
   <script>
     function performDestroy(id , referance){
-      let url = '/cms/admin/articles/'+id;
-      confirmDestroy(url , referance );
+      let url = '/cms/admin/article-delete/'+id;
+
+    }
+    function performRestore(id , referance){
+      let url = '/cms/admin/article-restore/'+id;
     }
 </script>
 @endsection
+
+
+
+
+

@@ -19,7 +19,7 @@
     <form>
       <div class="card-body">
         <div class="row">
-            <input type="text" name="category_id" id="category_id" value="{{$id}}"
+            <input type="text" name="subcategory_id" id="subcategory_id" value="{{$id}}"
                   class="form-control form-control-solid" hidden/>
           </div>
 
@@ -78,7 +78,7 @@ let formData = new FormData();
 formData.append('name',document.getElementById('name').value);
 formData.append('description',document.getElementById('description').value);
 formData.append('price',document.getElementById('price').value);
-formData.append('category_id',document.getElementById('category_id').value);
+formData.append('subcategory_id',document.getElementById('subcategory_id').value);
 formData.append('meal_number',document.getElementById('meal_number').value);
 formData.append('image',document.getElementById('image').files[0]);
 

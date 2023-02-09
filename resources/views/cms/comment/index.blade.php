@@ -25,7 +25,7 @@
                 <th>Name</th>
                 <th>Text</th>
                 <th>Email</th>
-                <th>Article Name</th>
+                <th>Article Title</th>
                 <th>Setting</th>
               </tr>
             </thead>
@@ -38,7 +38,7 @@
                     <td>{{ $comment->name }}</td>
                     <td>{{ $comment->text }}</td>
                     <td>{{ $comment->email }}</td>
-                    <td>{{ $comment->article->name }}</td>
+                    <td>{{ $comment->article->title }}</td>
                     <td>
                         <div class="btn-group">
                             <a href="{{ route('comments.edit' , $comment->id ) }}" type="button" class="btn btn-info">

@@ -21,12 +21,12 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>Category</label>
-                  <select class="form-control select2" id="category_id" name="category_id" style="width: 100%;">
-                    <option value="{{ $meals->category->id }}" selected> {{ $meals->category->name }} </option>
-                    @foreach($categories as $category)
-                    @if($meals->category->id != $category->id)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                  <label>SubCategory</label>
+                  <select class="form-control select2" id="subcategory_id" name="subcategory_id" style="width: 100%;">
+                    <option value="{{ $meals->subcategory->id }}" selected> {{ $meals->subcategory->name }} </option>
+                    @foreach($subcategories as $subcategory)
+                    @if($meals->subcategory->id != $subcategory->id)
+                    <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
                     @endif
                   @endforeach
                   </select>
@@ -35,21 +35,21 @@
             </div>
 
         <div class="row">
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="name">Meal Name</label>
                 <input type="text" class="form-control" value="{{ $meals->name }}" name="name" id="name" placeholder="Enter Meal name">
               </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="description">Meal Description</label>
                 <input type="text" class="form-control" value="{{ $meals->description }}" name="description" id="description" placeholder="Enter Meal Description">
               </div>
           </div>
         <div class="row">
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="price">Meal Price</label>
                 <input type="text" class="form-control" value="{{ $meals->price }}"  name="price" id="price" placeholder="Enter Meal Price">
               </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="meal_number">Meal Number</label>
                 <input type="text" class="form-control"  value="{{ $meals->meal_number }}" name="meal_number" id="meal_number" placeholder="Enter Meal Number">
               </div>
@@ -87,7 +87,7 @@ let formData = new FormData();
 formData.append('name',document.getElementById('name').value);
 formData.append('description',document.getElementById('description').value);
 formData.append('price',document.getElementById('price').value);
-formData.append('category_id',document.getElementById('category_id').value);
+formData.append('subcategory_id',document.getElementById('subcategory_id').value);
 formData.append('meal_number',document.getElementById('meal_number').value);
 formData.append('image',document.getElementById('image').files[0]);
 storeRoute('/cms/admin/update-meals/' +id , formData);

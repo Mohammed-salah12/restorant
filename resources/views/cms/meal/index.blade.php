@@ -15,7 +15,7 @@
       <div class="card">
         <div class="card-header">
             <a href="{{ route('createMeal' , $id) }}" type="button" class="btn btn-info">Add New Meal</a>
-            <a href="{{ route('categories.index') }}" type="button" class="btn btn-secondary">Back to Categories</a>
+            <a href="{{ route('subcategories.index') }}" type="button" class="btn btn-secondary">Back to SubCategories</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive p-0">
@@ -26,7 +26,7 @@
                 <th>Image</th>
                 <th>Name</th>
                 <th>Price</th>
-                <th>Category</th>
+                <th>SubCategory</th>
                 <th>Description</th>
                 <th>Setting</th>
               </tr>
@@ -40,7 +40,7 @@
                      </td>
                     <td>{{ $meal->name }}</td>
                     <td>{{ $meal->price }}</td>
-                    <td>{{ $meal->category->name }}</td>
+                    <td>{{ $meal->subcategory->name }}</td>
                     <td>{{ $meal->description }}</td>
 
                     <td>

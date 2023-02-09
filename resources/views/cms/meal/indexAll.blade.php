@@ -61,7 +61,7 @@
                         <th>Image</th>
                         <th>Name</th>
                         <th>Price</th>
-                        <th>Category</th>
+                        <th>SubCategory</th>
                         <th>Description</th>
                         <th>Setting</th>
                       </tr>
@@ -75,7 +75,7 @@
                          </td>
                         <td>{{ $meal->name }}</td>
                         <td>{{ $meal->price }}</td>
-                        <td>{{ $meal->category->name }}</td>
+                        <td>{{ $meal->subcategory->name }}</td>
                         <td>{{ $meal->description }}</td>
 
                         <td>
