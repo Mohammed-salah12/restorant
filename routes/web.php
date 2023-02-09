@@ -110,6 +110,8 @@ Route::prefix('cms/admin')->middleware('auth:admin,author')->group(function () {
     Route::resource('comments' , CommentController::class);
     Route::post('update-comments/{id}' , [CommentController::class , 'update'])->name('update-comments');
 
+    Route::resource('subcategories' , SubcategoryController::class);
+Route::post('update-subcategories/{id}' , [SubcategoryController::class , 'update'])->name('update-subcategories');
 });
 
 Route::get('email' , function(){
