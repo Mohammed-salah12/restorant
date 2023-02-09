@@ -9,8 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function meals(){
-        return $this->hasMany(Meal::class);
+    public function subcategories(){
+        return $this->hasMany(Subcategory::class);
     }
 
     public function bookings(){
@@ -21,8 +21,13 @@ class Category extends Model
         parent::boot();
 
         static::deleting(function($category) {
-            $category->meals()->delete();
+            $category->subcategories()->delete();
+
+        });
+        static::deleting(function($category) {
+            $category->bookings()->delete();
 
         });
     }
+
 }

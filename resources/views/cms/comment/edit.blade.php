@@ -21,12 +21,12 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>Country</label>
+                  <label>Article</label>
                   <select class="form-control select2" id="article_id" name="article_id" style="width: 100%;">
-                    <option value="{{ $comments->article->id }}" selected> {{ $comments->article->name }} </option>
+                    <option value="{{ $comments->article->id }}" selected> {{ $comments->article->title }} </option>
                     @foreach($articles as $article)
                     @if($comments->article->id != $article->id)
-                    <option value="{{ $article->id }}">{{ $article->name }}</option>
+                    <option value="{{ $article->id }}">{{ $article->title }}</option>
                     @endif
                   @endforeach
                   </select>

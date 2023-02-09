@@ -1,8 +1,8 @@
 @extends('cms.parent')
 
-@section('title' , 'Comment')
-@section('main_title' , 'Index Comment')
-@section('sub_title' , 'index comment')
+@section('title' , 'Like')
+@section('main_title' , 'Index Like')
+@section('sub_title' , 'index like')
 
 @section('styles')
 
@@ -14,37 +14,31 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-            <a href="{{ route('comments.create') }}" type="button" class="btn btn-info">Add New Comment</a>
+            <a href="{{ route('likes.create') }}" type="button" class="btn btn-info">Add New like</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive p-0">
           <table class="table table-hover text-nowrap">
             <thead>
               <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Text</th>
-                <th>Email</th>
+                <th>Full Name</th>
+                <th>Like</th>
                 <th>Article Name</th>
                 <th>Setting</th>
               </tr>
             </thead>
             <tbody>
-                @foreach ($comments as $comment )
+                @foreach ($likes as $like )
                 <tr>
-                    <td>
-                        <img class="img-circle img-bordered-sm" src="{{asset('storage/images/comment/'.$comment->image)}}" width="60" height="60" alt="User Image">
-                     </td>
-                    <td>{{ $comment->name }}</td>
-                    <td>{{ $comment->text }}</td>
-                    <td>{{ $comment->email }}</td>
-                    <td>{{ $comment->article->name }}</td>
+                    <td>{{ $like->user->first_name .' '. $like->user->last_name }}</td>
+                    <td>{{ $like->like }}</td>
+                    <td>{{ $like->article->title }}</td>
                     <td>
                         <div class="btn-group">
-                            <a href="{{ route('comments.edit' , $comment->id ) }}" type="button" class="btn btn-info">
+                            <a href="{{ route('likes.edit' , $like->id ) }}" type="button" class="btn btn-info">
                               <i class="fas fa-edit"></i>
                             </a>
-                            <button type="button" onclick="performDestroy({{ $comment->id }} , this)" class="btn btn-danger">
+                            <button type="button" onclick="performDestroy({{ $like->id }} , this)" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                               </button>
                           </div>
@@ -58,7 +52,7 @@
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
-      {{ $comments->links() }}
+      {{ $likes->links() }}
     </div>
   </div>
 @endsection
@@ -67,7 +61,7 @@
 @section('scripts')
   <script>
     function performDestroy(id , referance){
-      let url = '/cms/admin/comments/'+id;
+      let url = '/cms/admin/likes/'+id;
       confirmDestroy(url , referance );
     }
 </script>
