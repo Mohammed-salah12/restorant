@@ -15,6 +15,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\SayController;
+use App\Http\Controllers\SubSubcategoryController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\ViewerController;
 use App\Mail\AdminEmail;
@@ -110,7 +111,7 @@ Route::prefix('cms/admin')->middleware('auth:admin,author')->group(function () {
     Route::resource('comments' , CommentController::class);
     Route::post('update-comments/{id}' , [CommentController::class , 'update'])->name('update-comments');
 
-    Route::resource('subcategories' , SubcategoryController::class);
+    Route::resource('subcategories' , SubSubcategoryController::class);
 Route::post('update-subcategories/{id}' , [SubcategoryController::class , 'update'])->name('update-subcategories');
 });
 
