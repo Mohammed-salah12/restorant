@@ -19,6 +19,7 @@ use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\ViewerController;
 use App\Mail\AdminEmail;
+use App\Models\Author;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -114,14 +115,19 @@ Route::prefix('cms/admin')->middleware('auth:admin,author')->group(function () {
     Route::resource('subcategories' , SubcategoryController::class);
     Route::post('update-subcategories/{id}' , [SubcategoryController::class , 'update'])->name('update-subcategories');
 
-    Route::get('meal-restore/{id}', [MealController::class, 'restore']);
-    Route::get('meal-delete/{id}', [MealController::class, 'forceDelete']);
+    Route::get('meal-restore/{id}', [MealController::class, 'restore'])->name('meal-restore');
+    Route::get('meal-delete/{id}', [MealController::class, 'forceDelete'])->name('meal-delete');
 
 
-    Route::get('article-restore/{id}', [ArticleController::class, 'restore']);
-    Route::get('article-delete/{id}', [ArticleController::class, 'forceDelete']);
+    Route::get('article-restore/{id}', [ArticleController::class, 'restore'])->name('article-restore');
+    Route::get('article-delete/{id}', [ArticleController::class, 'forceDelete'])->name('article-delete');
 
+    Route::get('author-restore/{id}', [AuthorController::class, 'restore'])->name('author-restore');
+    Route::get('author-delete/{id}', [AuthorController::class, 'forceDelete'])->name('author-delete');
 
+    Route::get('article-bin', [ArticleController::class, 'indexBin'])->name('article-bin');
+    Route::get('meal-bin', [MealController::class, 'indexBin'])->name('meal-bin');
+    Route::get('author-bin', [AuthorController::class, 'indexBin'])->name('author-bin');
 });
 
 Route::get('email' , function(){

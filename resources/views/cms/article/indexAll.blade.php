@@ -38,7 +38,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <a href="{{ route('article-bin') }}" type="button" class="btn btn-secondary">Recycle Bin</a>
+                <a href="{{ route('article-bin') }}" type="button" class="btn btn-warning"> Go to Recycle Bin</a>
 
               </div>
               <!-- /.card-header -->

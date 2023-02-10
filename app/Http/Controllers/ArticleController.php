@@ -19,6 +19,7 @@ class ArticleController extends Controller
      public function indexBin()
     {
         $articles = Article::onlyTrashed()->paginate(5);
+        return response()->view('cms.article.recycle', compact('articles'));
 
     }
      public function indexArticle($id)
@@ -186,18 +187,13 @@ class ArticleController extends Controller
 
     public function restore($id){
         $restore = Article::onlyTrashed()->findOrFail($id)->restore();
-        if($restore){
-            return response()->json(['icon' => 'success' , 'title' => 'Restore is Successfully'] , 200);
-        }else{
-            return response()->json(['icon' => 'error' , 'title' => 'Restore is Failed'] , 400);
-        }
+        $articles = Article::onlyTrashed()->paginate(5);
+        return response()->view('cms.article.recycle', compact('articles'));
+
     }
     public function forceDelete($id){
-        $deleted = Article::findOrFail($id)->forceDelete();
-        if($deleted){
-            return response()->json(['icon' => 'success' , 'title' => 'Deleted is Successfully'] , 200);
-        }else{
-            return response()->json(['icon' => 'error' , 'title' => 'Deleted is Failed'] , 400);
-        }
+        $deleted = Article::where('id', $id)->forceDelete();
+        $articles = Article::onlyTrashed()->paginate(5);
+        return response()->view('cms.article.recycle', compact('articles'));
     }
 }

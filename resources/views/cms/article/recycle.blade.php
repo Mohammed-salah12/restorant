@@ -21,7 +21,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <a href="{{ route('article-bin') }}" type="button" class="btn btn-secondary">Back to Index</a>
+                <a href="{{ route('articles.index') }}" type="button" class="btn btn-dark">Back to Index</a>
 
               </div>
               <!-- /.card-header -->
@@ -47,12 +47,13 @@
                          <td>{{ $article->description }}</td>
 
                         <td>
-                                <button type="button" onclick="performDestroy({{ $article->id }} , this)" class="btn btn-danger">
-                                    <i class="fas fa-trash-alt"></i>
-                                  </button>
-                                <button type="button" onclick="performRestore({{ $article->id }} , this)" class="btn btn-info">
-                                    <i class="fas fa-trash-alt"></i>
-                                  </button>
+                                <a href="{{ route('article-restore' , $article->id) }}"  class="btn btn-info">
+                                  Restore
+                                  </a>
+                                <a href="{{ route('article-delete' , $article->id) }}"  class="btn btn-danger ">
+                                    Force Delete
+                                  </a>
+
                               </div>
                         </td>
                       </tr>
@@ -78,12 +79,37 @@
 
 @section('scripts')
   <script>
-    function performDestroy(id , referance){
-      let url = '/cms/admin/article-delete/'+id;
+
+    function performDestroy(id){
+        axios.get('/cms/admin/article-restore/' +id')
+  .then(function (response) {
+    Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'تمت عملية الحذف بنجاح',
+                showConfirmButton: false,
+                timer: 1500
+              })
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .then(function () {
+
+  });
 
     }
-    function performRestore(id , referance){
-      let url = '/cms/admin/article-restore/'+id;
+    function performRestore(){
+        if (true) {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'تمت عملية الاستعادة بنجاح',
+                showConfirmButton: false,
+                timer: 1500
+              })
+
+        }
     }
 </script>
 @endsection
