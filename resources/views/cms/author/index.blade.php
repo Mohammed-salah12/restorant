@@ -25,14 +25,9 @@
                         <a href="{{ route('authors.create') }}" type="button" class="btn btn-info">Add New Author</a>
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right"
-                                    placeholder="Search">
-
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
+                                <button type="button" class="btn btn-info" onclick="performDestroy({{ $author->id }} , this)">
+                                           Delete All <i class="fas fa-trash"></i>
+                                          </button>
                             </div>
                         </div>
                     </div>
@@ -107,6 +102,8 @@
     let url = "/cms/admin/authors/"+id;
     confirmDestroy(url, reference);
   }
+
+  
 
 
 </script>
