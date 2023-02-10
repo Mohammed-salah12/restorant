@@ -47,7 +47,7 @@
                          <td>{{ $article->description }}</td>
 
                         <td>
-                                <a href="{{ route('article-restore' , $article->id) }}"  class="btn btn-info">
+                                <a onclick="performRestore()" href="{{ route('article-restore' , $article->id) }}"  class="btn btn-info">
                                   Restore
                                   </a>
                                 <a href="{{ route('article-delete' , $article->id) }}"  class="btn btn-danger ">
@@ -78,40 +78,7 @@
 @endsection
 
 @section('scripts')
-  <script>
 
-    function performDestroy(id){
-        axios.get('/cms/admin/article-restore/' +id')
-  .then(function (response) {
-    Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'تمت عملية الحذف بنجاح',
-                showConfirmButton: false,
-                timer: 1500
-              })
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
-  .then(function () {
-
-  });
-
-    }
-    function performRestore(){
-        if (true) {
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'تمت عملية الاستعادة بنجاح',
-                showConfirmButton: false,
-                timer: 1500
-              })
-
-        }
-    }
-</script>
 @endsection
 
 

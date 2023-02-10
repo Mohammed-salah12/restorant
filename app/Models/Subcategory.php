@@ -9,7 +9,7 @@ class Subcategory extends Model
 {
     use HasFactory;
     public function meals(){
-        return $this->hasMany(Meal::class);
+        return $this->hasMany(Meal::class,'subcategory_id','id');
     }
     public function category(){
         return $this->belongsTo(Category::class);

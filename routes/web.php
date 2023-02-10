@@ -118,7 +118,6 @@ Route::prefix('cms/admin')->middleware('auth:admin,author')->group(function () {
     Route::get('meal-restore/{id}', [MealController::class, 'restore'])->name('meal-restore');
     Route::get('meal-delete/{id}', [MealController::class, 'forceDelete'])->name('meal-delete');
 
-
     Route::get('article-restore/{id}', [ArticleController::class, 'restore'])->name('article-restore');
     Route::get('article-delete/{id}', [ArticleController::class, 'forceDelete'])->name('article-delete');
 

@@ -14,6 +14,12 @@ class MealController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+     public function indexBin()
+    {
+        $meals = Meal::onlyTrashed()->paginate(5);
+        return response()->view('cms.meal.recycle', compact('meals'));
+
+    }
      public function indexMeal($id)
      {
          //
@@ -30,7 +36,7 @@ class MealController extends Controller
     public function index()
     {
 
-        $meals = Meal::orderBy('id' , 'desc')->paginate(5);
+        $meals = Meal::with('subcategory')->orderBy('id' , 'desc')->paginate(5);
         return response()->view('cms.meal.indexAll' , compact('meals'));
     }
 
@@ -182,18 +188,14 @@ class MealController extends Controller
 
     public function restore($id){
         $restore = Meal::onlyTrashed()->findOrFail($id)->restore();
-        if($restore){
-            return response()->json(['icon' => 'success' , 'title' => 'Restore is Successfully'] , 200);
-        }else{
-            return response()->json(['icon' => 'error' , 'title' => 'Restore is Failed'] , 400);
-        }
+        $meals = Meal::onlyTrashed()->paginate(5);
+        return response()->view('cms.meal.recycle', compact('meals'));
+
     }
     public function forceDelete($id){
-        $deleted = Meal::findOrFail($id)->forceDelete();
-        if($deleted){
-            return response()->json(['icon' => 'success' , 'title' => 'Deleted is Successfully'] , 200);
-        }else{
-            return response()->json(['icon' => 'error' , 'title' => 'Deleted is Failed'] , 400);
-        }
+        $deleted = Meal::where('id', $id)->forceDelete();
+        $meals = Meal::onlyTrashed()->paginate(5);
+        return response()->view('cms.meal.recycle', compact('meals'));
+
     }
 }

@@ -11,7 +11,7 @@ class Meal extends Model
     use HasFactory , SoftDeletes;
 
     public function subcategory(){
-        return $this->belongsTo(Subcategory::class);
+        return $this->belongsTo(Subcategory::class,'subcategory_id','id');
     }
 
 }

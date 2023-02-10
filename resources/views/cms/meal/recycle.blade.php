@@ -15,25 +15,13 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-
         <!-- /.row -->
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <a href="{{ route('meal-bin') }}" type="button" class="btn btn-warning"> Go to Recycle Bin</a>
+                <a href="{{ route('meals.index') }}" type="button" class="btn btn-dark">Back to Index</a>
 
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
@@ -58,23 +46,15 @@
                         <td>{{ $meal->name }}</td>
                         <td>{{ $meal->price }}</td>
                         <td>{{ $meal->description }}</td>
-
-                        <td>
-                            <div class="btn-group">
-                                <a href="{{ route('meals.edit' , $meal->id ) }}" type="button" class="btn btn-info">
-                                  <i class="fas fa-edit"></i>
-                                </a>
-                                <button type="button" onclick="performDestroy({{ $meal->id }} , this)" class="btn btn-danger">
-                                    <i class="fas fa-trash-alt"></i>
-                                  </button>
-                              </div>
-                        </td>
+                                <td>
+                                    <a href="{{ route('meal-restore' , $meal->id) }}"  class="btn btn-info">Restore</a>
+                                    <a href="{{ route('meal-delete' , $meal->id) }}"  class="btn btn-danger ">Force Delete</a>
+                                </td>
                       </tr>
                     @endforeach
-
-
-                  </tbody>
+                    </tbody>
                 </table>
+                </div>
               </div>
               <!-- /.card-body -->
             </div>
@@ -82,19 +62,14 @@
             {{ $meals->links()}}
           </div>
         </div>
-
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
-  </div>
 @endsection
 
 @section('scripts')
-  <script>
-    function performDestroy(id , referance){
-      let url = '/cms/admin/meals/'+id;
-      confirmDestroy(url , referance );
-    }
-</script>
+
 @endsection
+
+
+
+
+
