@@ -9,10 +9,6 @@
 @endsection
 
 
-@section('main_title' , 'Temp')
-
-
-@section('sub_title' , 'Temp')
 
 
 
@@ -23,3 +19,5 @@
 @section('scripts')
 
 @endsection
+
+

@@ -54,11 +54,11 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a class="active" href="index.html">home</a></li>
-                                            <li><a href="Menu.html">Menu</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a class="active" href="{{ route('resturant.index') }}">home</a></li>
+                                            <li><a href="{{ route('resturant.menu') }}">Menu</a></li>
+                                            <li><a href="{{ route('resturant.about') }}">About</a></li>
+                                            <li><a href="{{ route('resturant.blog') }}">Blog</a></li>
+                                            <li><a href="{{ route('resturant.contact') }}">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -143,9 +143,9 @@
                                 Useful Links
                             </h3>
                             <ul>
-                                <li><a href="menu.html">Menu</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="blog.html"> Blog</a></li>
+                                <li><a href="{{ route('resturant.menu') }}">Menu</a></li>
+                                <li><a href="{{ route('resturant.about') }}">About</a></li>
+                                <li><a href="{{ route('resturant.blog') }}"> Blog</a></li>
                             </ul>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                             Copyright &copy;
                             <script>document.write(new Date().getFullYear());</script> All rights reserved | This
                             template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
-                                href="https://colorlib.com" target="_blank">Colorlib</a>
+                                href="{{ route('resturant.login') }}" target="_blank">Colorlib</a>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>
@@ -208,30 +208,16 @@
 
 
     <!--contact js-->
-    <script src="{{ asset('resturant/js/contact.js') }}"></script>
+    {{-- <script src="{{ asset('resturant/js/contact.js') }}"></script>
     <script src="{{ asset('resturant/js/jquery.ajaxchimp.min.js') }}"></script>
     <script src="{{ asset('resturant/js/jquery.form.js') }}"></script>
     <script src="{{ asset('resturant/js/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('resturant/js/mail-script.js') }}"></script>
+    <script src="{{ asset('resturant/js/mail-script.js') }}"></script> --}}
 
 
     <script src="{{ asset('resturant/js/main.js') }}"></script>
 
-    <script>
-        $('#datepicker').datepicker({
-            iconsLibrary: 'fontawesome',
-            icons: {
-                rightIcon: '<span class="fa fa-calendar-o"></span>'
-            }
-        });
-        $('#datepicker2').datepicker({
-            iconsLibrary: 'fontawesome',
-            icons: {
-                rightIcon: '<span class="fa fa-calendar-o"></span>'
-            }
-
-        });
-    </script>
+    @yield('scripts')
 </body>
 
 </html>

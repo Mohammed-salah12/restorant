@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MealController;
@@ -131,4 +132,25 @@ Route::prefix('cms/admin')->middleware('auth:admin,author')->group(function () {
 
 Route::get('email' , function(){
     return new AdminEmail();
+});
+
+
+Route::prefix('Resturant/')->group(function(){
+
+    // Route::get('home' , [HomeController::class , 'home'])->name('resturant.parent');
+    Route::get('home' , [HomeController::class , 'home'])->name('resturant.index');
+    Route::get('menu' , [HomeController::class , 'menu'])->name('resturant.menu');
+    Route::get('about' , [HomeController::class , 'about'])->name('resturant.about');
+    Route::get('blog' , [HomeController::class , 'blog'])->name('resturant.blog');
+    Route::get('contact' , [HomeController::class , 'contact'])->name('resturant.contact');
+    Route::get('login' , [HomeController::class , 'login'])->name('resturant.login');
+
+
+    // Route::get('all/{id}' , [HomeController::class , 'all'])->name('news.all');
+
+    // Route::get('all/{id}' , [HomeController::class , 'all'])->name('news.all');
+    // Route::get('det/{id}' , [HomeController::class , 'det'])->name('news.det');
+    // Route::get('contacts' , [HomeController::class , 'contact'])->name('news.contact');
+    // Route::post('contacts' , [HomeController::class , 'storeContact']);
+
 });

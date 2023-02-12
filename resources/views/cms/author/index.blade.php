@@ -25,7 +25,7 @@
                         <a href="{{ route('authors.create') }}" type="button" class="btn btn-info">Add New Author</a>
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
-                                {{-- performDestroy({{ $author->id }} , this) --}}
+                                {{-- performDestroy11({{ $author->id }} , this) --}}
                                 <button type="button" class="btn btn-info" onclick="">
                                            Delete All <i class="fas fa-trash"></i>
                                           </button>
@@ -103,8 +103,6 @@
     let url = "/cms/admin/authors/"+id;
     confirmDestroy(url, reference);
   }
-
-
 
 
 </script>

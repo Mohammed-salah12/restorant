@@ -21,7 +21,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="cms/index2.html"><b>News System</b></a>
+    <a href="cms/index2.html"><b>Resturant System</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
