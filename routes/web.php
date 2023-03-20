@@ -38,13 +38,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('cms/')->middleware('guest:admin,author')->group(function(){
-    Route::get('{guard}/login' , [UserAuthController::class , 'showLogin'] )->name('view.login');
-    Route::post('{guard}/login' , [UserAuthController::class , 'login']);
-});
 
-Route::prefix('cms/admin/')->middleware('auth:admin,author')->group(function(){
-    Route::get('logout' , [UserAuthController::class , 'logout'] )->name('view.test');
+
+Route::prefix('cms/admin/')->group(function(){
 
     Route::get('change_password' , [UserAuthController::class , 'changePassword'])->name('change_password');
     Route::post('update_password' , [UserAuthController::class , 'updatePassword'])->name('update_password');
@@ -54,7 +50,7 @@ Route::prefix('cms/admin/')->middleware('auth:admin,author')->group(function(){
 });
 
 
-Route::prefix('cms/admin')->middleware('auth:admin,author')->group(function () {
+Route::prefix('cms/admin')->group(function () {
     Route::view('' , 'cms.parent');
     Route::view('temp' , 'cms.temp');
 
@@ -143,7 +139,6 @@ Route::prefix('Resturant/')->group(function(){
     Route::get('about' , [HomeController::class , 'about'])->name('resturant.about');
     Route::get('blog' , [HomeController::class , 'blog'])->name('resturant.blog');
     Route::get('contact' , [HomeController::class , 'contact'])->name('resturant.contact');
-    Route::get('login' , [HomeController::class , 'login'])->name('resturant.login');
 
 
     // Route::get('all/{id}' , [HomeController::class , 'all'])->name('news.all');

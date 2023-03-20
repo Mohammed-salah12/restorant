@@ -31,11 +31,11 @@
 
 
           <div class="dd">
-            <a  href="{{ route('view.login' , 'admin') }}" type="button"  class="btn btn-info btn-block">Admin</a>
+            <a  href="#" type="button"  class="btn btn-info btn-block">Admin</a>
           </div>
 
           <div class="dd">
-            <a href="{{ route('view.login' , 'author') }}" type="button" class="btn btn-info btn-block">Author</a>
+            <a href="#" type="button" class="btn btn-info btn-block">Author</a>
           </div>
 
           <style>

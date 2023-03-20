@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use App\Models\Category;
 use App\Models\Say;
 use Illuminate\Http\Request;
@@ -11,9 +12,10 @@ class HomeController extends Controller
 {
     public function home(){
         $categories = Category::all();
+        $abouts = About::all();
         // $sliders = Slider::take(3)->get();
         // $articles = Article::orderBy('created_at' , 'desc')->take(3)->get();
-        return view('resturant.index' ,compact('categories' ) );
+        return view('resturant.index' ,compact('categories', 'abouts') );
         // , compact('categories' , 'sliders' , 'articles')
     }
 
@@ -21,7 +23,9 @@ class HomeController extends Controller
         return view('resturant.menu');
     }
     public function about(){
-        return view('resturant.about');
+        $abouts = About::all();
+        $says = Say::all();
+        return view('resturant.about',compact('abouts','says'));
     }
     public function blog(){
         return view('resturant.blog');

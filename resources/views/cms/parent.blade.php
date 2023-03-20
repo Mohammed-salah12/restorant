@@ -292,7 +292,6 @@
 
                         <li class="nav-header">USER MANGMENT</li>
 
-                        @canAny(['index-admin', 'create-admin'])
                         <li class="nav-item">
 
                             <a href="#" class="nav-link">
@@ -303,28 +302,22 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                @can('index-admin')
                                     <li class="nav-item">
                                         <a href="{{ route('admins.index') }}" class="nav-link">
                                             <i class="fas fa-list nav-icon"></i>
                                             <p>Index</p>
                                         </a>
                                     </li>
-                                @endcan
-                                @can('create-admin')
                                     <li class="nav-item">
                                         <a href="{{ route('admins.create') }}" class="nav-link">
                                             <i class="fas fa-plus-square nav-icon"></i>
                                             <p>Create</p>
                                         </a>
                                     </li>
-                                @endcan
 
                             </ul>
                         </li>
-                        @endcanAny
 
-                        @canany(['index-author', 'create-author'])
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
@@ -334,25 +327,20 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                @can('index-author')
                                     <li class="nav-item">
                                         <a href="{{ route('authors.index') }}" class="nav-link">
                                             <i class="fas fa-list nav-icon"></i>
                                             <p>Index</p>
                                         </a>
                                     </li>
-                                @endcan
-                                @can('create-author')
                                     <li class="nav-item">
                                         <a href="{{ route('authors.create') }}" class="nav-link">
                                             <i class="fas fa-plus-square nav-icon"></i>
                                             <p>Create</p>
                                         </a>
                                     </li>
-                                @endcan
                             </ul>
                         </li>
-                        @endcanany
 
 
 
@@ -365,7 +353,6 @@
 
 
 
-                        @canany(['index-category', 'create-category'])
 
                         <li class="nav-item">
 
@@ -377,30 +364,24 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                @can('index-category')
                                     <li class="nav-item">
                                         <a href="{{ route('categories.index') }}" class="nav-link">
                                             <i class="fas fa-list nav-icon"></i>
                                             <p>Index</p>
                                         </a>
                                     </li>
-                                @endcan
-                                @can('create-category')
                                     <li class="nav-item">
                                         <a href="{{ route('categories.create') }}" class="nav-link">
                                             <i class="fas fa-plus-square nav-icon"></i>
                                             <p>Create</p>
                                         </a>
                                     </li>
-                                @endcan
 
                             </ul>
                         </li>
-                        @endcanany
 
 
 
-                        @canany(['index-meal'])
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -412,14 +393,12 @@
                             </a>
 
                             <ul class="nav nav-treeview">
-                                @can('index-meal')
                                     <li class="nav-item">
                                         <a href="{{ route('meals.index') }}" class="nav-link">
                                             <i class="fas fa-list nav-icon"></i>
                                             <p>Index All Meals</p>
                                         </a>
                                     </li>
-                                @endcan
                                 {{-- @can('create-meal')
                                     <li class="nav-item">
                                         <a href="{{ route('meals.create') }}" class="nav-link">
@@ -430,9 +409,7 @@
                                 @endcan --}}
                             </ul>
                         </li>
-                        @endcanany
 
-                        @canany(['index-categoryArticle', 'create-categoryArticle'])
                         <li class="nav-item">
 
                             <a href="#" class="nav-link">
@@ -443,28 +420,22 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                @can('index-categoryArticle')
                                     <li class="nav-item">
                                         <a href="{{ route('article_categories.index') }}" class="nav-link">
                                             <i class="fas fa-list nav-icon"></i>
                                             <p>Index</p>
                                         </a>
                                     </li>
-                                @endcan
-                                @can('create-categoryArticle')
                                     <li class="nav-item">
                                         <a href="{{ route('article_categories.create') }}" class="nav-link">
                                             <i class="fas fa-plus-square nav-icon"></i>
                                             <p>Create</p>
                                         </a>
                                     </li>
-                                @endcan
 
                             </ul>
                         </li>
-                        @endcanany
 
-                        @canany(['index-article'])
 
                         <li class="nav-item">
 
@@ -476,14 +447,12 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                @can('index-article')
                                     <li class="nav-item">
                                         <a href="{{ route('articles.index') }}" class="nav-link">
                                             <i class="fas fa-list nav-icon"></i>
                                             <p>Index All Articles</p>
                                         </a>
                                     </li>
-                                @endcan
 
 
                                 {{-- <li class="nav-item">
@@ -495,12 +464,10 @@
 
                             </ul>
                         </li>
-                        @endcanany
 
 
 
 
-                        @canany(['index-about', 'create-about'])
 
                         <li class="nav-item">
 
@@ -511,28 +478,23 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                @can('index-about')
                                     <li class="nav-item">
                                         <a href="{{ route('abouts.index') }}" class="nav-link">
                                             <i class="fas fa-list nav-icon"></i>
                                             <p>Index</p>
                                         </a>
                                     </li>
-                                @endcan
-                                @can('create-about')
                                     <li class="nav-item">
                                         <a href="{{ route('abouts.create') }}" class="nav-link">
                                             <i class="fas fa-plus-square nav-icon"></i>
                                             <p>Create</p>
                                         </a>
                                     </li>
-                                @endcan
+                                
 
                             </ul>
                         </li>
-                        @endcanany
 
-                        @canany(['index-information', 'create-information'])
 
                         <li class="nav-item">
 
@@ -543,26 +505,22 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                @can('index-information')
+                                ('index-information')
                                     <li class="nav-item">
                                         <a href="{{ route('informations.index') }}" class="nav-link">
                                             <i class="fas fa-list nav-icon"></i>
                                             <p>Index</p>
                                         </a>
                                     </li>
-                                @endcan
-                                @can('create-information')
                                     <li class="nav-item">
                                         <a href="{{ route('informations.create') }}" class="nav-link">
                                             <i class="fas fa-plus-square nav-icon"></i>
                                             <p>Create</p>
                                         </a>
                                     </li>
-                                @endcan
 
                             </ul>
                         </li>
-                        @endcanany
 
 
 
@@ -593,7 +551,7 @@
           </li> --}}
 
                         <li class="nav-item">
-                            <a href="{{ route('view.test') }}" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 {{-- <i class="fas fa-sign-out-alt"></i> --}}
                                 <p>Log out</p>

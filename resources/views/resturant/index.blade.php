@@ -393,30 +393,8 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="testmonial_active owl-carousel">
-                        <div class="single_carousel">
-                            <div class="single_testmonial ">
-                                <div class="author_opinion">
-                                    <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
-                                        sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed
-                                        neque.</p>
-                                </div>
-                                <div class="testmonial_author">
-                                    <div class="thumb">
-                                        <img src="img/testimonial/author.png" alt="DISH" loading="lazy">
-                                    </div>
-                                    <div class="name">
-                                        <h3>Robert Thomson</h3>
-                                        <div class="icon">
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                      
                         <div class="single_carousel">
                             <div class="single_testmonial ">
                                 <div class="author_opinion">
@@ -441,78 +419,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="single_carousel">
-                            <div class="single_testmonial ">
-                                <div class="author_opinion">
-                                    <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
-                                        sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed
-                                        neque.</p>
-                                </div>
-                                <div class="testmonial_author">
-                                    <div class="thumb">
-                                        <img src="img/testimonial/author2.png" alt="PERSONAL" loading="lazy">
-                                    </div>
-                                    <div class="name">
-                                        <h3>Kristiana Chouhan</h3>
-                                        <div class="icon">
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_carousel">
-                            <div class="single_testmonial ">
-                                <div class="author_opinion">
-                                    <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
-                                        sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed
-                                        neque.</p>
-                                </div>
-                                <div class="testmonial_author">
-                                    <div class="thumb">
-                                        <img src="img/testimonial/author.png" alt="PERSONAL" loading="lazy">
-                                    </div>
-                                    <div class="name">
-                                        <h3>Robert Thomson</h3>
-                                        <div class="icon">
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_carousel">
-                            <div class="single_testmonial ">
-                                <div class="author_opinion">
-                                    <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
-                                        sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed
-                                        neque.</p>
-                                </div>
-                                <div class="testmonial_author">
-                                    <div class="thumb">
-                                        <img src="img/testimonial/author2.png" alt="PERSONAL" loading="lazy">
-                                    </div>
-                                    <div class="name">
-                                        <h3>Kristiana Chouhan</h3>
-                                        <div class="icon">
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+
                     </div>
                 </div>
             </div>

@@ -110,7 +110,7 @@
                                 </div>
                         </div>
                         <div class="form-group mt-3">
-                            <button type="submit" class="button button-contactForm boxed-btn send">Send</button>
+                            <button onclick="Store()" type="button" class="button button-contactForm boxed-btn send">Send</button>
                         </div>
                     </form>
                 </div>
@@ -154,7 +154,7 @@
 
 
     <script>
-       
+
         <!--(C) INIT STAR RATING-- >
 
         // starry({
@@ -183,12 +183,12 @@
             store('/cms/admin/says', formData)
         }
 
-        let inputss = document.querySelectorAll(".one");
-        let sendBtn = document.querySelector(".send");
-        sendBtn.onclick = (_) => {
-            Store();
-            for (let i = 0; inputss.length; i++)
-                inputss[i].value = "";
-        };
+        // let inputss = document.querySelectorAll(".one");
+        // let sendBtn = document.querySelector(".send");
+        // sendBtn.onclick = (_) => {
+        //     Store();
+        //     for (let i = 0; inputss.length; i++)
+        //         inputss[i].value = "";
+        // };
     </script>
 @endsection

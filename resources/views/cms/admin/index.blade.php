@@ -55,27 +55,19 @@
                                 {{-- <td><span class="tag tag-success">Approved</span></td> --}}
                                 <tr>
                                     <td>{{ $admin->id }}</td>
-                                    <td>
-                                        <img class="img-circle img-bordered-sm"
-                                             src="{{ asset('storage/images/admin/'.$admin->user->image) }}"
-                                             width="60" height="60" alt="User_Image">
-                                    </td>
-                                    <td>{{ ($admin->user->first_name . ' ' . $admin->user->last_name ) ?? "" }}</td>
+                                  
                                     <td>{{ $admin->email  }}</td>
                                     <td>{{ $admin->user->mobile ?? "" }}</td>
                                     <td>{{ $admin->user->address ?? ""}}</td>
                                     <td>
                                     <div class="btn group">
-                                        @can('update-admin')
                                           <a href="{{ route('admins.edit' , $admin->id ) }}" type="button" class="btn btn-info">
                                             <i class="fas fa-edit"> </i>
                                          </a>
-                                         @endcan
-                                         @can('delete-admin')
+                                        
                                           <button type="button" class="btn btn-info" onclick="performDestroy({{ $admin->id }} , this)">
                                             <i class="fas fa-trash"></i>
                                           </button>
-                                          @endcan
                                           </div>
                                       </td>
 

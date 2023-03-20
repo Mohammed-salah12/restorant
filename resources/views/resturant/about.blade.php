@@ -27,15 +27,12 @@
     <div class="main_about_wrap">
         <div class="container">
             <div class="row">
+                @foreach ($abouts as $about )
                 <div class="col-xl-12">
-                    <h3>Exercitation photo booth stumptown tote
-                        bag todo Banksy elit small</h3>
-                    <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                        ipsa quae ab illo inventore veritatis et quasi. Exercitation photo booth stumptown tote bag todo
-                        Banksy, elit small batch freegan sed. Craft beer elit seitan exercitation photo booth et 8-bit
-                        kale chips proident chillwave deep vow laborum. Aliquip veniam delectus, marfa eiusmod
-                        pinterest.</p>
+                    <h3>{{ $about->title }}</h3>
+                    <p>{{ $about->content }}</p>
                 </div>
+
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -47,12 +44,14 @@
                         </div>
                         <div class="col-xl-6 col-md-6">
                             <div class="about_thumb">
-                                <img src="img/about/about_2.png" alt="ABOUT" loading="lazy">
+                                <img  src="{{asset('storage/images/about/'.$about->image)}}" loading="lazy" alt="User Image">
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
     <!-- about_area_start -->
@@ -119,19 +118,19 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="testmonial_active owl-carousel">
+
                         <div class="single_carousel">
                             <div class="single_testmonial ">
+                                @foreach ($says as $say)
                                 <div class="author_opinion">
-                                    <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
-                                        sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed
-                                        neque.</p>
+                                    <p>{{ $say->message }}</p>
                                 </div>
                                 <div class="testmonial_author">
                                     <div class="thumb">
-                                        <img src="img/testimonial/author.png" alt="">
+                                        <img class="img-circle img-bordered-sm" width="60" height="60" src="{{asset('storage/images/say/'.$say->image)}}" alt="">
                                     </div>
                                     <div class="name">
-                                        <h3>Robert Thomson</h3>
+                                        <h3>{{ $say->name }}</h3>
                                         <div class="icon">
                                             <a href="#"><i class="fa fa-star"></i> </a>
                                             <a href="#"><i class="fa fa-star"></i> </a>
@@ -141,104 +140,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
+
                         </div>
-                        <div class="single_carousel">
-                            <div class="single_testmonial ">
-                                <div class="author_opinion">
-                                    <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
-                                        sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed
-                                        neque.</p>
-                                </div>
-                                <div class="testmonial_author">
-                                    <div class="thumb">
-                                        <img src="img/testimonial/author2.png" alt="">
-                                    </div>
-                                    <div class="name">
-                                        <h3>Kristiana Chouhan</h3>
-                                        <div class="icon">
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_carousel">
-                            <div class="single_testmonial ">
-                                <div class="author_opinion">
-                                    <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
-                                        sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed
-                                        neque.</p>
-                                </div>
-                                <div class="testmonial_author">
-                                    <div class="thumb">
-                                        <img src="img/testimonial/author2.png" alt="">
-                                    </div>
-                                    <div class="name">
-                                        <h3>Kristiana Chouhan</h3>
-                                        <div class="icon">
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_carousel">
-                            <div class="single_testmonial ">
-                                <div class="author_opinion">
-                                    <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
-                                        sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed
-                                        neque.</p>
-                                </div>
-                                <div class="testmonial_author">
-                                    <div class="thumb">
-                                        <img src="img/testimonial/author.png" alt="">
-                                    </div>
-                                    <div class="name">
-                                        <h3>Robert Thomson</h3>
-                                        <div class="icon">
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_carousel">
-                            <div class="single_testmonial ">
-                                <div class="author_opinion">
-                                    <p>“Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
-                                        sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec sed
-                                        neque.</p>
-                                </div>
-                                <div class="testmonial_author">
-                                    <div class="thumb">
-                                        <img src="img/testimonial/author2.png" alt="">
-                                    </div>
-                                    <div class="name">
-                                        <h3>Kristiana Chouhan</h3>
-                                        <div class="icon">
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                            <a href="#"><i class="fa fa-star"></i> </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

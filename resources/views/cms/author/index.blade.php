@@ -51,12 +51,7 @@
                                 {{-- <td><span class="tag tag-success">Approved</span></td> --}}
                                 <tr>
                                     <td>{{ $author->id }}</td>
-                                    <td>
-                                        <img class="img-circle img-bordered-sm"
-                                             src="{{ asset('storage/images/author/' . $author->user->image) }}"
-                                             width="60" height="60" alt="User_Image">
-                                    </td>
-                                    <td>{{ ($author->user->first_name . ' ' . $author->user->last_name ) ?? "" }}</td>
+                                  
                                     <td>{{ $author->email  }}</td>
                                     <td><a href="{{route('indexArticle',['id'=>$author->id])}}"
                                         class="btn btn-info">({{$author->articles_count}})

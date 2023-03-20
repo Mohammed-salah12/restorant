@@ -27,7 +27,8 @@
 
     <link rel="stylesheet" href="{{  asset('resturant/css/style.css') }}">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     @yield('styles')
 </head>
 
@@ -175,7 +176,6 @@
                             Copyright &copy;
                             <script>document.write(new Date().getFullYear());</script> All rights reserved | This
                             template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
-                                href="{{ route('resturant.login') }}" target="_blank">Colorlib</a>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>
@@ -214,7 +214,8 @@
     <script src="{{ asset('resturant/js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('resturant/js/mail-script.js') }}"></script> --}}
 
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{{ asset('resturant/js/main.js') }}"></script>
 
     @yield('scripts')
